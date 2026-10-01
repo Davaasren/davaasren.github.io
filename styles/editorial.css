@@ -1,0 +1,82 @@
+/* Benchmark: hero + Uulzy. The remaining spreads retain their previous art direction. */
+:root{--paper:#ffffff;--ink:#171917;--muted:#666b68;--line:#d6d8d3;--accent:#737b83}.nav{height:76px}.nav .brand{font-size:12px;letter-spacing:-.25px;font-weight:700}.hero{min-height:calc(100svh - 76px);padding-top:25px;background:#ffffff}.hero-meta{font-size:10px;letter-spacing:.7px}.hero-edition{text-align:right}.hero-composition{position:relative;flex:1;display:flex;align-items:center;min-height:390px;margin:15px 0 35px;perspective:1000px}.hero-name{font-size:13.7vw;letter-spacing:-.075em;font-weight:600;width:100%;padding:0;line-height:.9;margin:0;z-index:2;position:relative;mix-blend-mode:multiply}.hero-name b{display:none}.hero-sculpture{position:absolute;left:34%;top:50%;width:clamp(300px,42vw,650px);transform:translateY(-50%);z-index:1;pointer-events:none;filter:drop-shadow(8px 20px 12px #15192515);perspective:900px}.hero-sculpture img{display:block;width:100%;height:auto}.hero-echo{position:absolute;left:8%;top:63%;font-size:13.7vw;letter-spacing:-.075em;font-weight:600;color:transparent;-webkit-text-stroke:1px #aaaeb080;white-space:nowrap;pointer-events:none;z-index:0}.material-note{position:absolute;right:0;top:20%;font-size:8px;letter-spacing:1px;writing-mode:vertical-rl;color:#818786}.hero-bottom{position:relative;z-index:3;grid-template-columns:1fr 1fr 1fr}.hero-bottom p{font-size:16px;line-height:1.5;letter-spacing:-.3px}.hero-caption{font-size:9px;letter-spacing:1px;line-height:2}.availability{font-size:9px;letter-spacing:1px}.availability i{background:#74816c;width:5px;height:5px}.scroll{font-size:9px;letter-spacing:1px}.scroll span{font-size:32px}.hero-rule{background:#8f9692;margin-top:25px}.work,.motion-active .work .project{background:var(--paper)}.work{overflow:hidden}.work>.section-title{font-size:clamp(45px,6vw,95px);max-width:70%;margin-bottom:55px}.motion-marquee{border-color:var(--line)}.motion-marquee>div{color:#949a97}.project[data-slug="uulzy"]{padding-bottom:80px;min-height:110svh;border-top-color:var(--line)}.project[data-slug="uulzy"] .project-heading{grid-template-columns:70px 1fr auto;position:relative;z-index:2;align-items:start;margin-bottom:-24px;pointer-events:none}.project[data-slug="uulzy"] .project-heading a{pointer-events:auto}.project[data-slug="uulzy"] .project-number{font-family:Arial,sans-serif;font-size:13px;margin-top:12px;color:var(--ink)}.project[data-slug="uulzy"] h3{font-size:clamp(65px,8.5vw,135px);letter-spacing:-.07em;margin:0 0 9px;line-height:.95}.project[data-slug="uulzy"] .category{font-size:9px;letter-spacing:1.3px;text-transform:uppercase}.project[data-slug="uulzy"] .project-link{display:none}.project[data-slug="uulzy"] .project-stage{background:#eff0ee;width:82%;margin:0 0 0 13%;height:62svh;min-height:410px;border:0;overflow:visible;box-shadow:0 15px 28px -22px #171b232f;isolation:initial}.project[data-slug="uulzy"] .stage-inner{overflow:hidden;border:1px solid #c8cfca;background:repeating-linear-gradient(0deg,transparent 0,transparent 89px,#1c282008 90px),#eff0ee}.project[data-slug="uulzy"] .stage-word{font-size:clamp(90px,13vw,210px);line-height:.84;width:120%;max-width:120%;text-align:center;font-weight:600;letter-spacing:-.07em;color:#202622}.uulzy-poster{display:block;transform:rotate(-6deg);opacity:.9}.uulzy-poster>span{display:block;white-space:nowrap}.uulzy-poster>span:nth-child(2){color:transparent;-webkit-text-stroke:1px #202622;transform:translateX(9%)}.uulzy-poster>span:nth-child(3){transform:translateX(-9%)}.project[data-slug="uulzy"] .stage-label{background:var(--paper);color:var(--ink);bottom:-12px;left:18px;padding:8px 12px;font-size:8px;letter-spacing:1px;z-index:2}.project[data-slug="uulzy"] .stage-plus{font-size:70px;right:-55px;top:45%;line-height:.5;color:var(--ink);z-index:2;font-weight:400}.project[data-slug="uulzy"] .project-description{grid-template-columns:1fr 1fr 1fr;margin:35px 0 0 13%;width:82%;font-size:12px;gap:35px}.project-role{grid-column:3;grid-row:1;display:flex;flex-direction:column;gap:10px}.project-role span{font-size:8px;letter-spacing:1.5px}.project-role strong{font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:500}.project[data-slug="uulzy"] .project-description>p:first-of-type{grid-column:1 / 3;grid-row:1;max-width:390px;font-size:13px}.project[data-slug="uulzy"] .missing{grid-column:1 / 3;max-width:450px;font-size:10px}.pointer-label{width:74px;height:74px;font-size:8px;background:#ffffffd9;box-shadow:0 0 0 1px #17191720}
+@media(min-width:1600px){.hero-name,.hero-echo{font-size:205px}.hero-sculpture{width:600px}}@media(max-width:800px){.hero-composition{min-height:380px}.hero-sculpture{left:28%;width:55vw}.hero-caption{display:none}.hero-bottom{grid-template-columns:1fr 1fr}.hero-name,.hero-echo{font-size:13.7vw}.project[data-slug="uulzy"]{min-height:0}.project[data-slug="uulzy"] .project-stage{min-height:330px;margin-left:6%;width:90%}.project[data-slug="uulzy"] .project-heading{grid-template-columns:35px 1fr auto;margin-bottom:10px}.project[data-slug="uulzy"] .stage-plus{right:-22px;font-size:48px}.project[data-slug="uulzy"] .project-description{margin-left:6%;width:90%;gap:20px}.project[data-slug="uulzy"] .stage-word{font-size:16vw}.project[data-slug="uulzy"] .stage-label{font-size:7px;max-width:85%}}@media(max-width:520px){.nav{height:72px}.nav .brand{font-size:10px}.nav nav{gap:10px}.nav a{font-size:10px}.nav .cv-link{font-size:9px}.hero{min-height:calc(100svh - 72px)}.hero-composition{min-height:350px;margin:0 0 15px}.hero-sculpture{left:13%;width:76vw}.hero-name{font-size:13.7vw}.hero-echo{top:60%;left:0}.hero-bottom p{font-size:13px}.hero-meta{font-size:8px}.scroll{font-size:8px;gap:12px}.material-note{font-size:6px}.work>.section-title{max-width:100%}.project[data-slug="uulzy"] h3{font-size:65px}.project[data-slug="uulzy"] .project-stage{min-height:290px;height:40svh;width:93%;margin-left:2%}.project[data-slug="uulzy"] .stage-word{font-size:22vw}.project[data-slug="uulzy"] .stage-plus{right:-17px;font-size:37px}.project[data-slug="uulzy"] .project-description{display:flex;flex-direction:column;margin-left:2%;width:93%;gap:18px}.project[data-slug="uulzy"] .project-role{order:0}.project[data-slug="uulzy"] .project-description>p{order:1}.project[data-slug="uulzy"]{padding-bottom:55px}.project[data-slug="uulzy"] .category{font-size:8px}}
+/* Crop intentionally oversize motion without creating a horizontal page scroll. */
+html,body{overflow-x:clip}
+
+/* One continuous paper canvas across the entire portfolio. */
+body,.hero,.work,.experience,.capabilities,.lab,.contact,
+.motion-active .scroll-scene,.motion-active .work .project,
+.project-stage,.project[data-slug="uulzy"] .project-stage,
+.project[data-slug="uulzy"] .stage-inner{background:#ffffff;color:#171917}
+.lab .small,.lab-caption span,.type-play p,.lab-note,
+.scene-index,.scene-foot{color:#666b68}
+.type-play{border-color:#d6d8d3}
+.play-letters button{color:#171917}
+.play-letters span,.play-letters button:hover,.play-letters button.active{color:#737b83}
+.cs-type span:nth-child(2){color:#767d78}
+.human-type b,.human-type span:last-child{color:#737b83}
+.scene-progress{background:#d6d8d3}
+.scene-progress i{background:#737b83}
+.contact footer,.project{border-color:#d6d8d3}
+
+/* Calm digital companion: never intercepts clicks or replaces the native cursor. */
+.cursor-fairy{position:fixed;top:0;left:0;width:40px;height:46px;z-index:60;pointer-events:none;opacity:0;transform-origin:center;filter:drop-shadow(0 2px 3px #233a5220)}
+.cursor-fairy svg{width:100%;height:100%;overflow:visible}
+.fairy-wing{transform-box:fill-box;transform-origin:90% 80%;animation:fairy-wing 1.4s ease-in-out infinite alternate}
+.fairy-wing.right{transform-origin:10% 80%;animation-delay:-.7s}
+.fairy-star{animation:fairy-light 2.4s ease-in-out infinite alternate}
+@keyframes fairy-wing{from{transform:scaleX(.8) rotate(-5deg)}to{transform:scaleX(1) rotate(6deg)}}
+@keyframes fairy-light{from{opacity:.4}to{opacity:1}}
+@media(pointer:coarse),(prefers-reduced-motion:reduce){.cursor-fairy{display:none}}
+
+/* Shared type scale: label / body / subheading / heading / display. */
+:root{--type-label:12px;--type-body:16px;--type-subheading:24px;--type-heading:clamp(40px,5.8vw,88px);--type-display:clamp(64px,10vw,152px);--type-name:clamp(40px,13.7vw,205px)}
+body{line-height:1.6}
+.nav .brand,.nav a,.nav .cv-link,.hero-meta,.hero-caption,.availability,.scroll,
+.section-label,.small,.category,.project .category,.project[data-slug="uulzy"] .category,
+.stage-label,.project[data-slug="uulzy"] .stage-label,.project-role span,.project-role strong,
+.project-description .missing,.project[data-slug="uulzy"] .missing,.timeline-row .date,
+.scene-index,.scene-foot,.lab-caption,.capability-grid h3,footer{font-size:var(--type-label);line-height:1.5;letter-spacing:.06em}
+.hero-bottom p,.about-copy,.project-description,.project[data-slug="uulzy"] .project-description,
+.project[data-slug="uulzy"] .project-description>p:first-of-type,.timeline-row p,.timeline-row .role,
+.education p,.foundation,.capability-grid p,.type-play p,.lab-note,#cv,.detail p,.detail-grid p{font-size:var(--type-body);line-height:1.65;letter-spacing:0}
+.timeline-row h3,.education h3,.capability-grid li,.detail-grid h2,.email{font-size:var(--type-subheading);line-height:1.35;letter-spacing:-.025em;font-weight:500}
+.capability-grid li{line-height:1.8}
+.section-title,.work>.section-title,.story h2,.project h3,.project[data-slug="uulzy"] h3{font-size:var(--type-heading);line-height:1.05;letter-spacing:-.055em;font-weight:500}
+em,.human-type span:last-child{font-family:inherit;font-style:normal;font-weight:inherit}
+.project-number,.project[data-slug="uulzy"] .project-number{font-family:inherit;font-size:var(--type-label);letter-spacing:.06em;line-height:1.5;color:var(--muted);margin-top:12px}
+.project-heading{grid-template-columns:70px 1fr auto}
+.contact h2,.detail h1,.cs-type,.human-type,.stage-word,.project[data-slug="uulzy"] .stage-word,.play-letters button,.play-letters span{font-size:var(--type-display);line-height:1;letter-spacing:-.06em}
+.hero-name,.hero-echo{font-size:var(--type-name)}
+.motion-marquee>div{font-size:var(--type-heading)}
+.material-note{font-size:var(--type-label);letter-spacing:.08em}
+/* Dark silver stays readable on white; a narrow highlight adds depth. */
+@supports (-webkit-background-clip:text){
+.hero-name>span,.section-title,.story h2,.contact h2>.line-mask>span,.project-heading h3 a{
+background:linear-gradient(165deg,#171d24 0%,#46535f 38%,#87949e 48%,#3c4853 56%,#171d24 78%);
+-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-name>span{text-shadow:0 2px 10px #30475a0b}
+}
+.section-title em,.story h2 em,.contact h2 em{color:#596875}
+.hero-echo{-webkit-text-stroke:1px #bcc6ce60}
+.project-stage{box-shadow:0 14px 35px -28px #31485e40}
+@media(max-width:800px){.project-heading,.project[data-slug="uulzy"] .project-heading{grid-template-columns:35px 1fr auto}.hero-meta{gap:20px}.hero-bottom{gap:20px}.material-note{display:none}}
+@media(max-width:520px){
+:root{--type-label:11px;--type-body:15px;--type-subheading:22px;--type-heading:40px;--type-display:clamp(52px,13vw,68px)}
+.nav nav{gap:10px}.nav .brand{letter-spacing:-.03em}.nav .cv-link{max-width:70px}.hero-caption{display:none}.hero-bottom p{font-size:var(--type-body)}
+.project[data-slug="uulzy"] .project-heading{margin-bottom:12px}.project-role{gap:5px}.contact-star{font-size:70px}.email{font-size:18px;overflow-wrap:anywhere}.human-type{font-size:11vw}.cs-type{font-size:13vw}
+}
+
+/* White remains the canvas; atmospheric detail floats behind the content. */
+.silver-field{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.has-atmosphere>.nav,.has-atmosphere>main{position:relative;z-index:1}
+.has-atmosphere .hero,.has-atmosphere .work,.has-atmosphere .experience,
+.has-atmosphere .capabilities,.has-atmosphere .lab,.has-atmosphere .contact,
+.has-atmosphere.motion-active .scroll-scene{background:transparent}
+.has-atmosphere.motion-active .work .project{background:rgba(255,255,255,.92)}
+.has-atmosphere .project-stage,.has-atmosphere .project[data-slug="uulzy"] .project-stage,
+.has-atmosphere .project[data-slug="uulzy"] .stage-inner{background:rgba(255,255,255,.68)}
+.has-atmosphere .type-play{background:linear-gradient(120deg,#ffffffa0,#edf5fc40,#ffffffa0);padding:25px 20px;border-radius:2px}
+@media(prefers-reduced-motion:reduce){.silver-field{display:none}}
