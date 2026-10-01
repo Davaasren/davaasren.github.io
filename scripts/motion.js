@@ -77,15 +77,22 @@ window.startPortfolioMotion = function () {
    ScrollTrigger.create({trigger:row,start:'top 65%',end:'bottom 40%',toggleClass:'is-focused'});
    gsap.from(row.querySelector('h3'),{x:25,scrollTrigger:{trigger:row,start:'top 90%',end:'top 60%',scrub:.4}});
   });
-  if(desktop && matchMedia('(pointer: fine)').matches){
+  {
+   const touchCompanion=matchMedia('(pointer: coarse)').matches || !desktop;
    const fairy=document.createElement('div');fairy.className='cursor-fairy';fairy.setAttribute('aria-hidden','true');
    fairy.innerHTML=`<svg viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg"><g fill="#e7f3ff" stroke="#9aafc5" stroke-width=".8"><path class="fairy-wing" d="M23 30C0 31 2 4 12 10C20 14 24 22 23 30Z"/><path class="fairy-wing right" d="M25 30C48 31 46 4 36 10C28 14 24 22 25 30Z"/><path class="fairy-wing" d="M21 30C4 26 4 45 14 40Z"/><path class="fairy-wing right" d="M27 30C44 26 44 45 34 40Z"/></g><circle cx="24" cy="23" r="4" fill="#d8e0e9" stroke="#6e8094" stroke-width=".8"/><path d="M24 28L19 39L29 39Z" fill="#9baec2"/><path d="M21 39L19 47M27 39L28 47M21 30L15 34M27 30L34 25" fill="none" stroke="#6e8094" stroke-linecap="round"/><path d="M34 25L39 16" stroke="#6e8094" stroke-width=".8"/><path class="fairy-star" d="M40 9L41 14L46 15L41 16L40 21L39 16L34 15L39 14Z" fill="#b5d4f2"/></svg>`;
    document.body.append(fairy);
    const fx=gsap.quickTo(fairy,'x',{duration:.65,ease:'power3.out'}),fy=gsap.quickTo(fairy,'y',{duration:.65,ease:'power3.out'});
-   let fairySeen=false;
-   on(document,'pointermove',event=>{if(event.pointerType==='touch')return;if(!fairySeen){gsap.set(fairy,{x:event.clientX+22,y:event.clientY-32});fairySeen=true;}fx(Math.min(innerWidth-44,event.clientX+22));fy(Math.max(4,Math.min(innerHeight-50,event.clientY-32)));gsap.to(fairy,{opacity:.85,duration:.25,overwrite:'auto'});});
-   on(document.documentElement,'pointerleave',()=>{gsap.to(fairy,{opacity:0,duration:.3});fairySeen=false;});
-   localCleanups.push(()=>{gsap.killTweensOf(fairy);fairy.remove();});
+   let fairySeen=false,returnHome;
+   if(touchCompanion){gsap.set(fairy,{x:innerWidth-52,y:innerHeight-100,opacity:.85});fairySeen=true;}
+   const followFairy=event=>{if(returnHome)returnHome.kill();if(!fairySeen){gsap.set(fairy,{x:event.clientX+22,y:event.clientY-32});fairySeen=true;}fx(Math.max(4,Math.min(innerWidth-44,event.clientX+22)));fy(Math.max(4,Math.min(innerHeight-50,event.clientY-32)));gsap.to(fairy,{opacity:.85,duration:.25,overwrite:'auto'});if(touchCompanion)returnHome=gsap.delayedCall(1.6,()=>{fx(innerWidth-52);fy(innerHeight-100);});};
+   on(document,'pointermove',event=>{if(event.pointerType!=='touch')followFairy(event);});
+   on(document,'pointerdown',followFairy);
+   on(window,'resize',()=>{if(touchCompanion){fx(innerWidth-52);fy(innerHeight-100);}});
+   on(document.documentElement,'pointerleave',()=>{if(!touchCompanion){gsap.to(fairy,{opacity:0,duration:.3});fairySeen=false;}});
+   localCleanups.push(()=>{if(returnHome)returnHome.kill();gsap.killTweensOf(fairy);fx.tween.kill();fy.tween.kill();fairy.remove();});
+  }
+  if(desktop && matchMedia('(pointer: fine)').matches){
    const cursor=document.createElement('div');cursor.className='pointer-label';cursor.setAttribute('aria-hidden','true');document.body.append(cursor);
    const x=gsap.quickTo(cursor,'x',{duration:.18}),y=gsap.quickTo(cursor,'y',{duration:.18});
    on(document,'pointermove',event=>{x(event.clientX+15);y(event.clientY+15)});

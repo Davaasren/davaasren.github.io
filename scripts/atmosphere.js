@@ -5,9 +5,9 @@ window.startAtmosphere = function(gsap){
  let w=0,h=0,dpr=1,last=0,px=-1000,py=-1000,tx=-1000,ty=-1000,active=false;
  const lab=document.querySelector('#lab'),ripples=[];
  const resize=()=>{w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);};
- const move=e=>{if(e.pointerType==='touch')return;tx=e.clientX;ty=e.clientY;if(!active){px=tx;py=ty;}active=true;};
+ const move=e=>{tx=e.clientX;ty=e.clientY;if(!active){px=tx;py=ty;}active=true;};
  const leave=()=>{active=false;};
- const tap=e=>{if(e.target.closest('a,button'))return;ripples.push({x:e.clientX,y:e.clientY,birth:performance.now()/1000});if(ripples.length>5)ripples.shift();};
+ const tap=e=>{move(e);if(e.target.closest('a,button'))return;ripples.push({x:e.clientX,y:e.clientY,birth:performance.now()/1000});if(ripples.length>5)ripples.shift();};
  const draw=time=>{
   if(document.hidden||time-last<1/30)return;last=time;
   px+=(tx-px)*.13;py+=(ty-py)*.13;
