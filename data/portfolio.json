@@ -1,0 +1,106 @@
+{
+  "projects": [
+    {
+      "slug": "uulzy",
+      "name": "UULZY",
+      "type": "Community / Event Digital Platform",
+      "description": "A community and event digital platform I created / worked on.",
+      "color": "#d7ddc5",
+      "missing": "Screenshots, project dates, my specific role and implemented features are still to be added."
+    },
+    {
+      "slug": "gertelife",
+      "name": "GERTE LIFE",
+      "type": "Personal Digital Platform / Blog",
+      "description": "A personal web project I created and maintain.",
+      "url": "https://gertelife.com",
+      "color": "#ecc8b1",
+      "missing": "Screenshots, project dates and details of the platform are still to be added."
+    },
+    {
+      "slug": "xacbank-chatbot",
+      "name": "A HELPING HAND",
+      "type": "XacBank · IT Helpdesk Chatbot · 2025",
+      "description": "An internal IT Helpdesk Chatbot developed during my internship and deployed in Microsoft Teams.",
+      "color": "#c5d5e1",
+      "context": "An internship at XacBank in 2025.",
+      "problem": "Internal IT helpdesk support for bank employees. Specific support scenarios are still to be documented.",
+      "solution": "A chatbot built with Microsoft Copilot Studio and Power Automate, deployed inside Microsoft Teams.",
+      "role": "I developed the IT Helpdesk Chatbot during my internship.",
+      "missing": "Approved screenshots and further detail about the support flow are still to be added."
+    },
+    {
+      "slug": "bachelors-project",
+      "name": "A FOUNDATION IN SYSTEMS",
+      "type": "Bachelor’s Project · Web-based System",
+      "description": "A web-based system developed as part of my Computer Science bachelor’s project.",
+      "color": "#dbd1e1",
+      "missing": "Project title, topic, functionality, technologies, my role and screenshots need to be supplied."
+    }
+  ],
+  "experience": [
+    {
+      "date": "MAR — JUN 2026",
+      "company": "Orchard Consulting LLC",
+      "role": "Backend Developer",
+      "description": "Worked with C#, .NET, SQL, SAP HANA, REST APIs, SAP Fiori and JavaScript."
+    },
+    {
+      "date": "2025",
+      "company": "XacBank",
+      "role": "IT Intern",
+      "description": "Developed an internal IT Helpdesk Chatbot using Microsoft Copilot Studio and Power Automate, deployed in Microsoft Teams."
+    },
+    {
+      "date": "DURING UNIVERSITY",
+      "company": "Bidnii Nukhud Savings and Credit Cooperative",
+      "role": "Loan Officer · Part-time",
+      "description": "Calculated monthly loan and savings interest, prepared repayment schedules and monitored active loan records."
+    }
+  ],
+  "education": {
+    "institution": "National University of Mongolia",
+    "degree": "Bachelor’s Degree in Computer Science",
+    "date": "2021–2025"
+  },
+  "capabilities": {
+    "Foundation": [
+      "Computer Science",
+      "Digital Product Development",
+      "Web Technologies",
+      "Automation",
+      "Problem Solving"
+    ],
+    "Technology": [
+      "Next.js",
+      "JavaScript",
+      "C#",
+      "Python",
+      "Git / GitHub",
+      "Generative AI tools"
+    ],
+    "Exploring": [
+      "Human-Computer Interaction",
+      "UX & Interaction Design",
+      "Creative Technology",
+      "Motion & 3D",
+      "Immersive Media"
+    ]
+  },
+  "contact": {
+    "email": "bdavaasren6@gmail.com",
+    "location": "Ulaanbaatar, Mongolia",
+    "github": "https://github.com/Davaasren"
+  },
+  "cv": {
+    "available": false,
+    "path": "/assets/cv/davaa-cv.pdf"
+  },
+  "lab": [
+    {
+      "name": "TYPE / PLAY",
+      "status": "Live experiment on this website",
+      "description": "Move your pointer across the letters. A small study in type, proximity and interaction."
+    }
+  ]
+}
