@@ -27,13 +27,13 @@ window.startPortfolioMotion = function () {
   const intro=gsap.timeline({defaults:{ease:'power4.out'}});
   intro.from('.hero-meta',{y:15,opacity:0,duration:.45})
    .from('.hero-name>span',{yPercent:115,rotationX:-35,clipPath:'inset(0 0 100% 0)',stagger:.045,duration:.9},.1)
-   .from('.hero-bottom>p,.hero-caption',{y:25,opacity:0,duration:.65},.65)
+   .from('.hero-introduction,.hero-caption',{y:25,opacity:0,duration:.65},.65)
    .from('.scroll',{y:20,opacity:0,duration:.5},1)
    .from('.hero-rule',{scaleX:0,duration:.8},.5);
   if(scrollY>100)intro.progress(1);
   const letters=gsap.utils.toArray('.hero-name>span');
   const hero=gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:desktop?'+=85%':'+=60%',scrub:.6,invalidateOnRefresh:true},defaults:{ease:'none'}});
-  letters.forEach((letter,i)=>hero.to(letter,{x:()=>((i/(letters.length-1))-.5)*.24*innerWidth,y:()=> (i%2? .1:-.18)*innerHeight,rotation:(i-(letters.length-1)/2)*2,scale:desktop?1.35:1.15,duration:1},0));
+  letters.forEach((letter,i)=>hero.to(letter,{x:()=>((i/(letters.length-1))-.5)*-.035*innerWidth,y:()=> (i%2? .1:-.18)*innerHeight,rotation:(i-(letters.length-1)/2)*2,scale:.95,duration:1},0));
   hero.to('.hero-bottom',{y:-90,opacity:0,duration:.75},0).to('.hero-meta',{y:-30,opacity:0,duration:.6},0).to('.hero-name b',{rotation:180,duration:1},0);
   if(document.querySelector('.hero-sculpture')){
    hero.to('.hero-sculpture',{y:()=>innerHeight*.25,rotation:18,scale:1.15,duration:1},0).to('.hero-echo',{xPercent:-12,y:-60,duration:1},0);
@@ -48,10 +48,10 @@ window.startPortfolioMotion = function () {
    .to('.human-type',{scale:desktop?.92:1,duration:.3},1.5)
    .to('.scene-progress i',{scaleX:1,duration:1.85},0);
   gsap.from('.story>h2 .line-mask>span',{yPercent:115,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:'.story>h2',start:'top 85%',end:'top 40%',scrub:.5}});
-  gsap.from('.about-copy>p',{y:35,stagger:.12,scrollTrigger:{trigger:'.about-copy',start:'top 95%',end:'top 65%',scrub:.4}});
+  gsap.from('.about-copy>article',{y:35,stagger:.12,scrollTrigger:{trigger:'.about-copy',start:'top 95%',end:'top 65%',scrub:.4}});
   // One moving typographic bridge: scroll progress + a restrained velocity skew.
   const marquee=document.querySelector('.motion-marquee>div');
-  gsap.to(marquee,{xPercent:-35,ease:'none',scrollTrigger:{trigger:'.work',start:'top bottom',end:'bottom top',scrub:.7,onUpdate:self=>{gsap.to(marquee,{skewX:gsap.utils.clamp(-3,3,self.getVelocity()/1000),duration:.4,overwrite:'auto'})}}});
+
   document.querySelectorAll('.section-title').forEach(title=>gsap.from(title.querySelectorAll('.line-mask>span'),{yPercent:110,stagger:.07,ease:'power3.out',scrollTrigger:{trigger:title,start:'top 90%',end:'top 45%',scrub:.4}}));
   document.querySelectorAll('.project').forEach((project,i)=>{
    const stage=project.querySelector('.project-stage'),inner=project.querySelector('.stage-inner');
@@ -104,7 +104,7 @@ window.startPortfolioMotion = function () {
    localCleanups.push(()=>cursor.remove());
   }
   const ending=gsap.timeline({scrollTrigger:{trigger:'.contact',start:'top 90%',end:'top 10%',scrub:.6},defaults:{ease:'none'}});
-  ending.from('.contact .line-mask>span',{xPercent:(i)=>i%2?25:-25,yPercent:110,stagger:.12,duration:1},0)
+  ending.from('.contact .line-mask>span',{yPercent:110,stagger:.12,duration:1},0)
    .from('.contact-star',{rotation:-180,scale:.25,duration:1},0)
    .from('.contact-bottom',{y:50,duration:.6},.5);
   gsap.to('.contact-star',{rotation:90,ease:'none',scrollTrigger:{trigger:'.contact',start:'top 10%',end:'bottom bottom',scrub:.5}});
