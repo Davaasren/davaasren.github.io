@@ -19,3 +19,11 @@ Missing information is explicitly marked; previews are typographic placeholders,
 ## Verification
 
 Serve the repository with a local static HTTP server. Check `/`, `/overview.html`, `/lab/`, each `/work/<slug>/`, and `/404.html`. Verify mobile layouts, keyboard navigation and reduced motion. No production compilation is needed: these files are the production artifact. Publish by pushing to `main`.
+
+## Scroll and motion system
+
+`styles/motion.css` and `scripts/motion.js` enhance only the homepage. Locally vendored GSAP 3.13.0, ScrollTrigger 3.13.0 and Lenis 1.3.26 run without a package manager or production build. Lenis uses GSAP’s ticker; ScrollTrigger receives Lenis scroll updates. Touch scrolling stays native.
+
+Desktop: opening masks, hero letter dispersion, an 180vh pinned foundation-to-direction story, scrubbed project masks/scales, overlapping project pins, velocity-sensitive moving type, timeline progress, pointer feedback and a composed ending. Mobile removes all pins and cursor interactions while keeping scroll-controlled reveals. Reduced motion skips Lenis and the animation setup; all content remains visible. GSAP matchMedia reverts animations at breakpoints and cleans up listeners, ticker callbacks and Lenis.
+
+Project previews are still explicitly marked typographic placeholders. Motion applies to those previews until approved imagery is provided.
