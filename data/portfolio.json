@@ -1,43 +1,32 @@
 {
   "projects": [
     {
-      "slug": "uulzy",
-      "name": "UULZY",
-      "type": "Community / Event Digital Platform",
-      "description": "A community and event digital platform I created / worked on.",
-      "color": "#d7ddc5",
-      "missing": "Screenshots, project dates, my specific role and implemented features are still to be added.",
-      "year": "2025",
-      "role": "Product / Development"
-    },
-    {
-      "slug": "gertelife",
-      "name": "GERTE LIFE",
-      "type": "Personal Digital Platform / Blog",
-      "description": "A personal web project I created and maintain.",
-      "url": "https://gertelife.com",
-      "color": "#ecc8b1",
-      "missing": "Screenshots, project dates and details of the platform are still to be added."
+      "slug": "sap-erp",
+      "name": "SAP ERP Development",
+      "type": "Enterprise systems",
+      "description": "Backend, APIs, and database development.",
+      "color": "#c5d5e1",
+      "missing": ""
     },
     {
       "slug": "xacbank-chatbot",
-      "name": "A HELPING HAND",
+      "name": "IT Helpdesk Chatbot",
       "type": "XacBank · IT Helpdesk Chatbot · 2025",
       "description": "An internal IT Helpdesk Chatbot developed during my internship and deployed in Microsoft Teams.",
       "color": "#c5d5e1",
       "context": "An internship at XacBank in 2025.",
-      "problem": "Internal IT helpdesk support for bank employees. Specific support scenarios are still to be documented.",
+      "problem": "Internal IT helpdesk support for bank employees.",
       "solution": "A chatbot built with Microsoft Copilot Studio and Power Automate, deployed inside Microsoft Teams.",
       "role": "I developed the IT Helpdesk Chatbot during my internship.",
-      "missing": "Approved screenshots and further detail about the support flow are still to be added."
+      "missing": ""
     },
     {
       "slug": "bachelors-project",
-      "name": "A FOUNDATION IN SYSTEMS",
-      "type": "Bachelor’s Project · Web-based System",
-      "description": "A web-based system developed as part of my Computer Science bachelor’s project.",
+      "name": "Appointment System",
+      "type": "Bachelor’s thesis · Web-based booking system",
+      "description": "A web-based appointment booking system developed for my bachelor’s thesis.",
       "color": "#dbd1e1",
-      "missing": "Project title, topic, functionality, technologies, my role and screenshots need to be supplied."
+      "missing": ""
     }
   ],
   "experience": [
@@ -54,7 +43,7 @@
       "description": "Developed an internal IT Helpdesk Chatbot using Microsoft Copilot Studio and Power Automate, deployed in Microsoft Teams."
     },
     {
-      "date": "DURING UNIVERSITY",
+      "date": "2022–2024",
       "company": "Bidnii Nukhud Savings and Credit Cooperative",
       "role": "Loan Officer · Part-time",
       "description": "Calculated monthly loan and savings interest, prepared repayment schedules and monitored active loan records."
@@ -66,27 +55,19 @@
     "date": "2021–2025"
   },
   "capabilities": {
-    "Foundation": [
-      "Computer Science",
-      "Digital Product Development",
-      "Web Technologies",
-      "Automation",
-      "Problem Solving"
+    "Backend & Data": [
+      "C# · .NET · REST APIs",
+      "SQL · SAP HANA",
+      "Python · Excel"
     ],
-    "Technology": [
-      "Next.js",
-      "JavaScript",
-      "C#",
-      "Python",
-      "Git / GitHub",
-      "Generative AI tools"
+    "Web & Tools": [
+      "JavaScript · Next.js · SAP Fiori",
+      "GitHub · C++"
     ],
-    "Exploring": [
-      "Human-Computer Interaction",
-      "UX & Interaction Design",
-      "Creative Technology",
-      "Motion & 3D",
-      "Immersive Media"
+    "Automation": [
+      "Copilot Studio",
+      "Power Automate",
+      "Microsoft Teams"
     ]
   },
   "contact": {

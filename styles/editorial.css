@@ -119,7 +119,7 @@ background:linear-gradient(165deg,#171d24 0%,#46535f 38%,#87949e 48%,#3c4853 56%
 .availability{color:#405762}.availability i{width:8px;height:8px;background:#e3fff2;border:1px solid #83b9a3;box-shadow:0 0 5px #81d8af,0 0 14px #89ddbb80;animation:availability-light 2.8s ease-in-out infinite}
 @keyframes availability-light{50%{box-shadow:0 0 8px #81d8af,0 0 20px #89ddbbb0}}
 .human-type{font-size:clamp(40px,9vw,130px)}
-.motion-marquee{margin-inline:0;padding:20px 0}.motion-marquee>div{white-space:normal;width:auto;font-size:clamp(20px,2.6vw,36px);line-height:1.5;letter-spacing:-.025em;transform:none!important}
+.motion-marquee{margin-inline:0;padding:20px 0}.motion-marquee>div{white-space:normal;width:auto;font-size:clamp(20px,2.6vw,36px);line-height:1.5;letter-spacing:-.025em}
 .project-description .missing,.project[data-slug="uulzy"] .missing{font-size:14px;line-height:1.65;letter-spacing:0;color:#485967;background:#ffffffeb;padding:14px 16px;border-left:2px solid #b0c4d5}
 .timeline-row .date{font-size:16px;letter-spacing:.025em;color:#40515f}
 .capability-grid li{line-height:1.4;margin-bottom:5px}
@@ -151,3 +151,64 @@ html[lang="mn"] .human-type{font-size:clamp(32px,7.3vw,110px)}html[lang="mn"] .c
 .project-stage{touch-action:pan-y}
 .project-stage,.stage-inner{will-change:auto}
 }
+/* Resume content, theme controls and printable document. */
+.theme-switch,.print-resume{font:inherit;color:inherit;background:transparent;border:1px solid currentColor;padding:8px 12px;cursor:pointer}.theme-switch{font-size:12px}.resume-training{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}.resume-training h3{font-size:20px;line-height:1.35}.resume-training p{font-size:16px;line-height:1.6}.stage-word{font-size:clamp(28px,5vw,80px);max-width:85%;text-align:center}.hero-introduction{max-width:100%}
+
+@media(max-width:800px){.resume-training{grid-template-columns:1fr;gap:16px}.nav{flex-wrap:wrap}.nav nav{gap:12px}.theme-switch{padding:5px 8px}.hero-meta>span:first-child{max-width:165px}}
+@media print{html[data-theme]{filter:none!important;color-scheme:light}body{background:#fff!important;color:#111!important}.nav,.hero-composition,.scroll-scene,.foundation,.hero-bottom,.motion-marquee,.project-stage,.project-link,.contact-star,.atmosphere-canvas,.fairy,.cursor,.hero-rule,.theme-switch,.print-resume,.skip{display:none!important}*{animation:none!important;transition:none!important;transform:none!important;opacity:1!important;clip-path:none!important}main,.section,.hero{padding:12px 0!important;margin:0!important;min-height:0!important;height:auto!important}.hero-meta{display:block!important}.hero-meta>*{text-align:left!important;margin:4px 0!important}.section-title,.story>h2,.contact>h2{font-size:25px!important;line-height:1.2!important;margin:10px 0!important}.section-label{font-size:10px!important}.about-copy,.capability-grid,.resume-training{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:14px!important}.about-copy h3,.project h3,.timeline-row h3{font-size:16px!important}.about-copy p,.project-description p,.timeline-row p,.education p,.resume-training p,.capability-grid li{font-size:11px!important;line-height:1.4!important;margin:4px 0!important}.project{padding:10px 0!important;break-inside:avoid}.project-heading{margin:0!important}.timeline-row{padding:10px 0!important;grid-template-columns:100px 1fr 1fr!important}.date{font-size:12px!important}.contact-bottom,footer{margin:10px 0!important}.email{font-size:16px!important}footer{font-size:10px!important}.pin-spacer{height:auto!important;padding:0!important}.project-description{display:block!important}a{color:#111!important;text-decoration:none!important}.hero-sculpture,canvas{display:none!important}}
+
+/* Quiet night palette; no whole-page inversion, so silver artwork keeps its material. */
+body,.nav,.project,.project-stage,.stage-inner,.scroll-scene{transition:background-color 850ms ease,color 850ms ease,border-color 850ms ease}html[data-theme=dark]{color-scheme:dark;--paper:#11161e;--ink:#e3e8ef;--muted:#a2adba;--line:#303b49;--accent:#a4b7cc}html[data-theme=dark] body{background:#11161e;color:#e3e8ef}html[data-theme=dark] .hero,html[data-theme=dark] .section,html[data-theme=dark] .scroll-scene{background:transparent}html[data-theme=dark] .nav{background:#11161ed9}html[data-theme=dark] .hero-name{mix-blend-mode:normal;background-image:linear-gradient(155deg,#dde6ef 10%,#91a0b0 40%,#f0f4f8 55%,#a5b3c2 80%)}html[data-theme=dark] .hero-echo{-webkit-text-stroke-color:#8d9bad38}html[data-theme=dark] .section-title em,html[data-theme=dark] .story em,html[data-theme=dark] .contact em{color:#b4c1d0}.cursor-fairy{transition:filter 850ms ease}.cursor-fairy::after{content:'';position:absolute;left:17px;top:25px;width:7px;height:7px;border-radius:50%;background:#c9dfff;opacity:.35;box-shadow:0 0 9px 3px #b5d4f244;animation:firefly-breathe 3.6s ease-in-out infinite;pointer-events:none;transition:background 850ms,box-shadow 850ms,opacity 850ms}html[data-theme=dark] .cursor-fairy{filter:drop-shadow(0 0 5px #e6cf7655)}html[data-theme=dark] .cursor-fairy::after{background:#f0dea0;opacity:.8;box-shadow:0 0 8px 3px #e9cf7655,0 0 19px 6px #e9cf7618}html[data-theme=dark] .fairy-wing{fill:#b6c9de;opacity:.5}html[data-theme=dark] .fairy-star{fill:#eedda1}@keyframes firefly-breathe{0%,100%{transform:scale(.75);opacity:.35}50%{transform:scale(1.15);opacity:.75}}@media print{.silver-field,.cursor-fairy{display:none!important}}
+html[data-theme=dark] .hero-name{background-image:none;color:#d5dfeb}html[data-theme=dark] .hero-name>span{background-image:linear-gradient(155deg,#dde6ef 10%,#91a0b0 40%,#f0f4f8 55%,#a5b3c2 80%);background-clip:text;-webkit-background-clip:text;color:transparent}html[data-theme=dark] .hero-meta,html[data-theme=dark] .hero-introduction strong,html[data-theme=dark] .nav a,html[data-theme=dark] .language-switch button{color:#d5dfeb}
+
+/* Soft firefly light blooms with the existing theme transition. */
+html[data-theme=dark] .cursor-fairy::after{box-shadow:0 0 9px 4px #f5dc8980,0 0 28px 10px #efd17a30}html[data-theme=dark] .cursor-fairy{filter:drop-shadow(0 0 7px #e6cf7670)}
+
+/* Keep project content in its original white and silver palette. */
+html[data-theme=dark] .project{background:#fff;color:#171b1e;--ink:#171b1e;--muted:#64717e;--line:#dce2e7}
+html[data-theme=dark] .project-stage,html[data-theme=dark] .stage-inner{background:#f7f9fc!important;color:#171b1e}
+html[data-theme=dark] .project-heading,html[data-theme=dark] .project-description{background:#fff;color:#171b1e}
+html[data-theme=dark] .project-description p,html[data-theme=dark] .project a,html[data-theme=dark] .stage-word,html[data-theme=dark] .stage-label,html[data-theme=dark] .stage-plus{color:#171b1e}
+html[data-theme=dark] .cs-type,html[data-theme=dark] .human-type{color:#d4dce5}html[data-theme=dark] .cs-type span:last-child,html[data-theme=dark] .human-type span:last-of-type{color:#94a3b2}
+html[data-theme=dark] .scene-index,html[data-theme=dark] .scene-foot{color:#9aa9b8}
+/* Consistent readable dark surfaces across resume content. */
+html[data-theme=dark] .project,html[data-theme=dark] .project-heading,html[data-theme=dark] .project-description,html[data-theme=dark] .project-stage,html[data-theme=dark] .stage-inner{background:#151d28!important;color:#e3eaf2;--ink:#e3eaf2;--muted:#b0bdcc;--line:#354252}
+html[data-theme=dark] .project a,html[data-theme=dark] .project-description p,html[data-theme=dark] .stage-word,html[data-theme=dark] .stage-label,html[data-theme=dark] .stage-plus,html[data-theme=dark] .section-label,html[data-theme=dark] .foundation,html[data-theme=dark] .capability-grid li,html[data-theme=dark] .capability-grid h3,html[data-theme=dark] .about-copy h3,html[data-theme=dark] .about-copy strong,html[data-theme=dark] .timeline-row h3,html[data-theme=dark] .education h3,html[data-theme=dark] .resume-training h3,html[data-theme=dark] .contact-bottom,html[data-theme=dark] footer,html[data-theme=dark] .email{color:#e3eaf2}
+html[data-theme=dark] .category,html[data-theme=dark] .project-number,html[data-theme=dark] .date,html[data-theme=dark] .role,html[data-theme=dark] .about-copy p,html[data-theme=dark] .timeline-row p,html[data-theme=dark] .education p,html[data-theme=dark] .resume-training p,html[data-theme=dark] .motion-marquee,html[data-theme=dark] .scene-index,html[data-theme=dark] .scene-foot{color:#b0bdcc}
+html[data-theme=dark] .missing,html[data-theme=dark] .detail-note{background:#202b39;color:#c5d0dd}html[data-theme=dark] .pointer-label{background:#202b39;color:#e3eaf2;border-color:#8c9caf}
+html[data-theme=dark] body.motion-active .work .project{background:#151d28!important}
+html[data-theme=dark] .section-title,html[data-theme=dark] .story>h2,html[data-theme=dark] .contact>h2,html[data-theme=dark] .section-title .line-mask>span,html[data-theme=dark] .story>h2 .line-mask>span,html[data-theme=dark] .contact>h2 .line-mask>span{color:#edf3fa!important;background-image:none!important;-webkit-text-fill-color:#edf3fa}
+html[data-theme=dark] .section-title em,html[data-theme=dark] .story>h2 em,html[data-theme=dark] .contact>h2 em{color:#bccbdb!important;-webkit-text-fill-color:#bccbdb}
+/* Let the star field continue through dark project cards. */
+html[data-theme=dark] body.motion-active .work .project,html[data-theme=dark] .project,html[data-theme=dark] .project-heading,html[data-theme=dark] .project-description,html[data-theme=dark] .project-stage,html[data-theme=dark] .stage-inner{background:transparent!important}
+html[data-theme=dark] .project-stage{border:1px solid #a4b7cc26;box-shadow:none}
+html[data-theme=dark] .project-heading,html[data-theme=dark] .project-description{border-color:#a4b7cc26}
+
+/* Stable editorial project rows: no stacked or floating content. */
+.work .project{min-height:0;padding:44px 0 54px;margin:0;position:relative;isolation:isolate;border-top:1px solid var(--line)}
+.work .project-heading{margin:0 0 24px;align-items:start}.work .project-heading h3{font-size:clamp(25px,3.6vw,52px);line-height:1.15;overflow:visible}
+.work .project-stage{height:280px;min-height:0;overflow:hidden;margin:0;position:relative;border-radius:12px}
+.work .stage-inner{overflow:hidden}.work .stage-word{font-size:clamp(24px,3.4vw,48px);line-height:1.2;max-width:80%;margin:0}
+.work .stage-label{font-size:10px;letter-spacing:.08em;bottom:20px;left:24px}.work .stage-plus{top:20px;right:24px;font-size:25px}
+.work .project-description{margin:22px 0 0;padding:0;max-width:760px}.work .project-description p{font-size:16px;line-height:1.65;margin:0}
+html[data-theme=dark] .work .project-stage{background:linear-gradient(135deg,#b3c9e109,#b3c9e103)!important;border-color:#b3c9e12b}
+@media(max-width:800px){.work .project{padding:30px 0 36px}.work .project-stage{height:220px}.work .project-heading{margin-bottom:18px}.work .project-description p{font-size:14px}}
+
+/* Continuous skills display: identical halves make the loop seamless. */
+.skills-lights{overflow:hidden;margin:30px 0 44px;padding:22px 0;border-block:1px solid #9aaec34d;background:linear-gradient(180deg,#edf3f980,#fff0);color:#405a74;position:relative;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.skills-lights::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#6685a61c .7px,transparent .8px);background-size:5px 5px}
+.skills-light-track{display:flex;width:max-content;animation:skills-light-scroll 58s linear infinite;will-change:transform}.skills-light-track>span{flex-shrink:0;white-space:nowrap;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:clamp(14px,1.65vw,22px);font-weight:600;letter-spacing:.18em;text-transform:uppercase;text-shadow:0 0 9px #698fbf38;padding-right:1em}
+html[data-theme=dark] .skills-lights{background:linear-gradient(180deg,#b7d5ff0b,#b7d5ff02);color:#c8e3ff;border-color:#9cc9f344}html[data-theme=dark] .skills-light-track>span{text-shadow:0 0 5px #b9dcff70,0 0 17px #6baff64a}html[data-theme=dark] .skills-lights::before{background-image:radial-gradient(#a6ccff24 .7px,transparent .8px)}
+@keyframes skills-light-scroll{to{transform:translateX(-50%)}}
+@media(max-width:800px){.skills-lights{padding:18px 0;margin:24px 0 30px}}
+@media print{.skills-lights{display:none!important}}
+
+.hero>.skills-lights{flex-shrink:0;width:100%;margin:0 0 24px;padding:18px 0;z-index:3}.hero>.skills-lights .skills-light-track>span{font-size:clamp(13px,1.4vw,20px)}
+
+.hero>.skills-lights{margin:25px 0 0;border-bottom:0}
+
+.motion-marquee.skills-lights{margin:35px 0 45px;padding:22px 0;background:transparent}.motion-marquee.skills-lights>.skills-light-track{width:max-content;font-size:inherit;color:inherit}.motion-marquee.skills-lights .skills-light-track>span{font-size:clamp(16px,2.4vw,34px);letter-spacing:.1em}
+
+.motion-marquee.skills-lights>.skills-light-track{animation-duration:30s;white-space:nowrap}
+
+.theme-switch{position:relative;display:grid;place-items:center;width:38px;height:38px;padding:0!important;border-radius:50%;border-color:#91a5b544;overflow:hidden;transition:background .4s,border-color .4s}.theme-switch:hover{background:#91a5b518}.theme-switch svg{position:absolute;width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .65s cubic-bezier(.22,1,.36,1),opacity .45s}.theme-switch .theme-sun{opacity:1;transform:rotate(0) scale(1)}.theme-switch .theme-moon{opacity:0;transform:rotate(-75deg) scale(.45)}html[data-theme=dark] .theme-switch .theme-sun{opacity:0;transform:rotate(90deg) scale(.45)}html[data-theme=dark] .theme-switch .theme-moon{opacity:1;transform:rotate(0) scale(1)}.theme-switch:focus-visible{outline:2px solid currentColor;outline-offset:3px}

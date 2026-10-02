@@ -54,27 +54,8 @@ window.startPortfolioMotion = function () {
   const marquee=document.querySelector('.motion-marquee>div');
 
   document.querySelectorAll('.section-title').forEach(title=>gsap.from(title.querySelectorAll('.line-mask>span'),{yPercent:110,stagger:.07,ease:'power3.out',scrollTrigger:{trigger:title,start:'top 90%',end:'top 45%',scrub:.4}}));
-  document.querySelectorAll('.project').forEach((project,i)=>{
-   const stage=project.querySelector('.project-stage'),inner=project.querySelector('.stage-inner');
-   const next=project.nextElementSibling;
-   if(!desktop){
-    gsap.from([project.querySelector('.project-number'),project.querySelector('h3'),project.querySelector('.project-description')],{y:18,opacity:0,duration:.45,stagger:.06,ease:'power2.out',scrollTrigger:{trigger:project,start:'top 90%',once:true}});
-    return;
-   }
-   if(project.dataset.slug==='uulzy')gsap.fromTo(stage,{x:desktop?80:15},{x:desktop?-30:0,ease:'none',scrollTrigger:{trigger:project,start:'top bottom',end:'bottom top',scrub:.6}});
-   if(desktop && next) ScrollTrigger.create({trigger:project,start:'top top',endTrigger:next,end:'top top',pin:true,pinSpacing:false,anticipatePin:1});
-   const reveal=gsap.timeline({scrollTrigger:{trigger:project,start:'top 95%',end:'top 15%',scrub:.5},defaults:{ease:'none'}});
-   reveal.from(project.querySelector('.project-number'),{y:55,rotation:-10,duration:.35},0)
-    .from(project.querySelector('h3'),{x:desktop?100:35,y:30,duration:.45},.08)
-    .from(stage,{...(project.dataset.slug==='uulzy'?{}:{clipPath:'inset(20% 8% 20% 8%)'}),y:70,duration:.8},.12)
-    .from(inner,{...(project.dataset.slug==='uulzy'?{clipPath:'inset(20% 8% 20% 8%)'}:{}),scale:1.2,y:45,duration:.8},.12)
-    .from(project.querySelector('.project-description'),{y:30,duration:.4},.5);
-   gsap.to(inner,{y:-35,ease:'none',scrollTrigger:{trigger:stage,start:'top 30%',end:'bottom top',scrub:.6}});
-   if(desktop){
-    const word=stage.querySelector('.stage-word'),x=gsap.quickTo(word,'x',{duration:.6,ease:'power3.out'}),y=gsap.quickTo(word,'y',{duration:.6,ease:'power3.out'});
-    on(stage,'pointermove',event=>{const r=stage.getBoundingClientRect();x(((event.clientX-r.left)/r.width-.5)*25);y(((event.clientY-r.top)/r.height-.5)*-20)});
-    on(stage,'pointerleave',()=>{x(0);y(0)});
-   }
+  document.querySelectorAll('.project').forEach(project=>{
+   gsap.from(project.querySelector('.project-heading'),{y:16,opacity:0,duration:.5,ease:'power2.out',scrollTrigger:{trigger:project,start:'top 90%',once:true}});
   });
   const progress=document.createElement('div');progress.className='timeline-progress';document.querySelector('#timeline').append(progress);
   gsap.to(progress,{scaleY:1,ease:'none',scrollTrigger:{trigger:'#timeline',start:'top 65%',end:'bottom 65%',scrub:true}});
