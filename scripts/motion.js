@@ -3,6 +3,7 @@ window.startPortfolioMotion = function () {
  if (!document.querySelector('.hero') || !window.gsap || !window.ScrollTrigger || !window.Lenis) return;
  const {gsap,ScrollTrigger,Lenis}=window;
  gsap.registerPlugin(ScrollTrigger);
+ ScrollTrigger.config({ignoreMobileResize:true});
  const mm=gsap.matchMedia();
  const listeners=[];
  const listen=(el,event,fn,options)=>{el.addEventListener(event,fn,options);listeners.push(()=>el.removeEventListener(event,fn,options));};
@@ -13,14 +14,14 @@ window.startPortfolioMotion = function () {
   heading.innerHTML=heading.innerHTML.split(/<br\s*\/?\s*>/i).map(line=>`<span class="line-mask"><span>${line}</span></span>`).join('');
   if(star)heading.append(star);
  });
- mm.add({desktop:'(min-width: 801px)',mobile:'(max-width: 800px)',reduce:'(prefers-reduced-motion: reduce)'},context=>{
-  const {desktop,reduce}=context.conditions;
-  if(reduce)return;
+ mm.add({desktop:'(min-width: 801px) and (pointer: fine)',mobile:'(max-width: 800px), (pointer: coarse)'},context=>{
+  const {desktop}=context.conditions;
+
   document.body.classList.add('motion-active');
-  const lenis=new Lenis({lerp:.16,smoothWheel:true,syncTouch:false,autoRaf:false,anchors:{offset:-30,duration:.8}});
-  lenis.on('scroll',ScrollTrigger.update);
+  const lenis=desktop?new Lenis({lerp:.16,smoothWheel:true,syncTouch:false,autoRaf:false,anchors:{offset:-30,duration:.8}}):{isDestroyed:false,raf(){},resize(){},scrollTo(target){window.scrollTo({top:target.getBoundingClientRect().top+scrollY-30,behavior:'instant'});},destroy(){this.isDestroyed=true;}};
+  if(desktop)lenis.on('scroll',ScrollTrigger.update);
   const tick=time=>lenis.raf(time*1000);
-  gsap.ticker.add(tick);gsap.ticker.lagSmoothing(0);
+  if(desktop)gsap.ticker.add(tick);gsap.ticker.lagSmoothing(0);
   const localCleanups=[];
   if(window.startAtmosphere)localCleanups.push(window.startAtmosphere(gsap));
   const on=(el,event,fn)=>{el.addEventListener(event,fn);localCleanups.push(()=>el.removeEventListener(event,fn));};
@@ -56,6 +57,10 @@ window.startPortfolioMotion = function () {
   document.querySelectorAll('.project').forEach((project,i)=>{
    const stage=project.querySelector('.project-stage'),inner=project.querySelector('.stage-inner');
    const next=project.nextElementSibling;
+   if(!desktop){
+    gsap.from([project.querySelector('.project-number'),project.querySelector('h3'),project.querySelector('.project-description')],{y:18,opacity:0,duration:.45,stagger:.06,ease:'power2.out',scrollTrigger:{trigger:project,start:'top 90%',once:true}});
+    return;
+   }
    if(project.dataset.slug==='uulzy')gsap.fromTo(stage,{x:desktop?80:15},{x:desktop?-30:0,ease:'none',scrollTrigger:{trigger:project,start:'top bottom',end:'bottom top',scrub:.6}});
    if(desktop && next) ScrollTrigger.create({trigger:project,start:'top top',endTrigger:next,end:'top top',pin:true,pinSpacing:false,anticipatePin:1});
    const reveal=gsap.timeline({scrollTrigger:{trigger:project,start:'top 95%',end:'top 15%',scrub:.5},defaults:{ease:'none'}});

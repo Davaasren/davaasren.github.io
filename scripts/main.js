@@ -1,5 +1,5 @@
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-fetch('/data/portfolio.json').then(r => {if(!r.ok) throw new Error('Content unavailable'); return r.json()}).then(data => {
+fetch(window.portfolioLanguage==='mn'?'/data/portfolio.mn.json':'/data/portfolio.json').then(r => {if(!r.ok) throw new Error('Content unavailable'); return r.json()}).then(data => {
  const e=escapeHTML;
  const email=document.querySelector("#email");if(email){email.href="mailto:"+data.contact.email;email.textContent=data.contact.email+" ↗";}
  const location=document.querySelector("#location");if(location)location.textContent=data.contact.location;
@@ -10,9 +10,10 @@ fetch('/data/portfolio.json').then(r => {if(!r.ok) throw new Error('Content unav
  const capabilities=document.querySelector('#capabilities');if(capabilities)capabilities.innerHTML=Object.entries(data.capabilities).map(([name,items])=>`<div><h3>${e(name)}</h3><ul>${items.map(x=>`<li>${e(x)}</li>`).join('')}</ul>${name==='Exploring'?'<p>Areas I’m developing, rather than professional expertise.</p>':''}</div>`).join('');
  const cv=document.querySelector('#cv-state');if(cv&&data.cv.available)cv.innerHTML=`<a href="${e(data.cv.path)}" download>Download CV ↓</a>`;
  const detail=document.querySelector('#project-detail');if(detail){const p=data.projects.find(x=>x.slug===detail.dataset.slug);if(p){document.title=`${p.name} — Davaa`;detail.innerHTML=`<a href="/#work">← Selected work</a><p class="section-label">${e(p.type)}${p.year?` / ${e(p.year)}`:""}</p><h1>${e(p.name)}</h1><p class="detail-intro">${e(p.description)}</p>${p.role?`<div class="detail-role"><span class="section-label">ROLE</span><p>${e(p.role)}</p></div>`:""}<div class="project-stage" style="--project-color:${e(p.color)}"><span class="stage-inner"><span class="stage-word">${e(p.name)}</span></span><span class="stage-label">PROJECT IMAGERY TO COME</span></div>${p.context?`<div class="detail-grid">${['context','problem','solution','role'].map(k=>`<section><h2>${k==='role'?'My role':k.charAt(0).toUpperCase()+k.slice(1)}</h2><p>${e(p[k])}</p></section>`).join('')}</div>`:''}${p.url?`<p><a href="${e(p.url)}">Visit ${e(p.name)} ↗</a></p>`:''}<p class="detail-note">${e(p.missing)} This page will develop into a fuller case study as supporting material is added.</p>`;}}
+ if(window.applyPortfolioLanguage)window.applyPortfolioLanguage();
  initMotion();
 }).catch(()=>{const target=document.querySelector('#projects');if(target)target.innerHTML='<p>Portfolio content could not load. <a href="/overview.html">Read the portfolio overview</a>.</p>';});
-function initMotion(){initImageReveals();if(window.startPortfolioMotion)window.startPortfolioMotion();if(window.startParticleSphere)window.startParticleSphere();if(document.querySelector('#project-detail')&&window.gsap&&window.startAtmosphere&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const stop=window.startAtmosphere(window.gsap);window.addEventListener('pagehide',stop,{once:true});}}
+function initMotion(){renderVectorSymbols();initImageReveals();if(window.startPortfolioMotion)window.startPortfolioMotion();if(window.startParticleSphere)window.startParticleSphere();if(document.querySelector('#project-detail')&&window.gsap&&window.startAtmosphere){const stop=window.startAtmosphere(window.gsap);window.addEventListener('pagehide',stop,{once:true});}}
 document.querySelectorAll('.play-letters button').forEach(button=>button.addEventListener('click',()=>{button.classList.toggle('active');button.setAttribute('aria-pressed',String(button.classList.contains('active')))}));
 
 function initImageReveals(){
@@ -20,11 +21,18 @@ function initImageReveals(){
   const inner=stage.querySelector('.stage-inner'),image=stage.querySelector('.project-reveal-image');if(!image)return;
   inner.classList.add('has-image-reveal');let touchReveal=false;
   const reveal=event=>{const r=inner.getBoundingClientRect();inner.style.setProperty('--reveal-x',`${event.clientX-r.left}px`);inner.style.setProperty('--reveal-y',`${event.clientY-r.top}px`);inner.style.setProperty('--reveal-radius',`${Math.min(170,r.width*.3)}px`);inner.classList.add('is-revealing');};
-  stage.addEventListener('pointermove',reveal,{passive:true});
+  stage.addEventListener('pointermove',event=>{if(event.pointerType!=='touch')reveal(event);},{passive:true});
   stage.addEventListener('pointerleave',()=>{if(touchReveal)return;inner.style.setProperty('--reveal-radius','0px');inner.classList.remove('is-revealing');});
   stage.addEventListener('pointerdown',event=>{if(event.pointerType==='touch'){reveal(event);touchReveal=true;}});
   stage.addEventListener('click',event=>{if(touchReveal&&!stage.dataset.touchReady){event.preventDefault();stage.dataset.touchReady='true';}});
   stage.addEventListener('focus',()=>{inner.style.setProperty('--reveal-x','50%');inner.style.setProperty('--reveal-y','50%');inner.style.setProperty('--reveal-radius','160px');inner.classList.add('is-revealing');});
   stage.addEventListener('blur',()=>{touchReveal=false;delete stage.dataset.touchReady;inner.style.setProperty('--reveal-radius','0px');inner.classList.remove('is-revealing');});
  });
+}
+
+/* Draw decorative symbols as vectors so mobile fonts cannot turn them into emoji. */
+function renderVectorSymbols(){
+ const paths={'↗':'M5 19L19 5M5 5h14v14','↘':'M5 5l14 14M5 19h14V5','↑':'M12 21V3M5 10l7-7 7 7','←':'M21 12H3M10 5l-7 7 7 7','→':'M3 12h18M14 5l7 7-7 7','⟶':'M2 12h20M16 6l6 6-6 6','✳':'M12 2v20M2 12h20M5 5l14 14M5 19L19 5','◌':'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18'};
+ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+ for(const node of nodes){if(node.parentElement.closest('script,style,svg'))continue;if(!/[↗↘↑←→⟶✳◌]/.test(node.textContent))continue;const fragment=document.createDocumentFragment();for(const part of node.textContent.split(/([↗↘↑←→⟶✳◌])/)){if(!paths[part]){fragment.append(document.createTextNode(part));continue;}const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');svg.setAttribute('class','symbol-icon');const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',paths[part]);svg.append(path);fragment.append(svg);}node.replaceWith(fragment);}
 }

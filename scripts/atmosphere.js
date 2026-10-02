@@ -2,14 +2,15 @@
 window.startAtmosphere = function(gsap){
  const canvas=document.createElement('canvas');canvas.className='silver-field';canvas.setAttribute('aria-hidden','true');document.body.prepend(canvas);
  const ctx=canvas.getContext('2d');if(!ctx){canvas.remove();return ()=>{};}
+ const phone=matchMedia('(pointer: coarse), (max-width:800px)').matches;
  let w=0,h=0,dpr=1,last=0,px=-1000,py=-1000,tx=-1000,ty=-1000,active=false;
  const lab=document.querySelector('#lab'),ripples=[];
- const resize=()=>{w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);};
+ const resize=()=>{w=innerWidth;h=innerHeight;dpr=phone?1:Math.min(devicePixelRatio||1,1.5);canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);};
  const move=e=>{tx=e.clientX;ty=e.clientY;if(!active){px=tx;py=ty;}active=true;};
  const leave=()=>{active=false;};
  const tap=e=>{move(e);if(e.target.closest('a,button'))return;ripples.push({x:e.clientX,y:e.clientY,birth:performance.now()/1000});if(ripples.length>5)ripples.shift();};
  const draw=time=>{
-  if(document.hidden||time-last<1/30)return;last=time;
+  if(document.hidden||time-last<1/(phone?20:30))return;last=time;
   px+=(tx-px)*.13;py+=(ty-py)*.13;
   const r=lab?.getBoundingClientRect(),play=r&&r.top<h&&r.bottom>0;
   ctx.clearRect(0,0,w,h);
@@ -27,8 +28,8 @@ window.startAtmosphere = function(gsap){
    ctx.save();ctx.translate(cx,cy);ctx.rotate(rotation);ctx.strokeStyle='rgba(96,125,151,.19)';ctx.lineWidth=.8;
    for(let ring=0;ring<count;ring++){
     const radius=size*(.26+ring*.035);ctx.beginPath();
-    for(let step=0;step<=120;step++){
-     const a=step/120*Math.PI*2;
+    for(let step=0;step<=(phone?60:120);step++){
+     const a=step/(phone?60:120)*Math.PI*2;
      const fold=1+.15*Math.sin(a*3+ring*.065)+.085*Math.cos(a*5-ring*.04);
      const x=Math.cos(a)*radius*fold,y=Math.sin(a)*radius*fold*.68;
      step?ctx.lineTo(x,y):ctx.moveTo(x,y);
@@ -37,12 +38,12 @@ window.startAtmosphere = function(gsap){
    }
    ctx.restore();
   };
-  island(w*.075,h*.20+parallax,Math.min(w*.25,290),-.4+drift*.001,w<600?15:22);
-  island(w*.94,h*.83-parallax,Math.min(w*.31,365),.65-drift*.001,w<600?18:26);
+  island(w*.075,h*.20+parallax,Math.min(w*.25,290),-.4+drift*.001,phone?8:22);
+  island(w*.94,h*.83-parallax,Math.min(w*.31,365),.65-drift*.001,phone?9:26);
   // Offset orbital arcs balance the organic contours with a precise shape.
   ctx.save();ctx.translate(w*.70,h*.06+drift);ctx.rotate(-.35);
   ctx.strokeStyle='rgba(96,125,151,.16)';ctx.lineWidth=.8;
-  for(let n=0;n<12;n++){ctx.beginPath();ctx.ellipse(0,0,100+n*13,55+n*7,0,.12,Math.PI*1.8);ctx.stroke();}
+  for(let n=0;n<(phone?6:12);n++){ctx.beginPath();ctx.ellipse(0,0,100+n*13,55+n*7,0,.12,Math.PI*1.8);ctx.stroke();}
   ctx.restore();
   // Fine, slowly breathing contours sit around the edges of the white canvas.
   for(let j=0;j<6;j++){

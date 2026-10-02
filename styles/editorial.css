@@ -28,7 +28,7 @@ body,.hero,.work,.experience,.capabilities,.lab,.contact,
 .fairy-star{animation:fairy-light 2.4s ease-in-out infinite alternate}
 @keyframes fairy-wing{from{transform:scaleX(.8) rotate(-5deg)}to{transform:scaleX(1) rotate(6deg)}}
 @keyframes fairy-light{from{opacity:.4}to{opacity:1}}
-@media(prefers-reduced-motion:reduce){.cursor-fairy{display:none}}
+
 
 /* Shared type scale: label / body / subheading / heading / display. */
 :root{--type-label:12px;--type-body:16px;--type-subheading:24px;--type-heading:clamp(40px,5.8vw,88px);--type-display:clamp(64px,10vw,152px);--type-name:clamp(40px,13.7vw,205px)}
@@ -79,7 +79,7 @@ background:linear-gradient(165deg,#171d24 0%,#46535f 38%,#87949e 48%,#3c4853 56%
 .has-atmosphere .project-stage,.has-atmosphere .project[data-slug="uulzy"] .project-stage,
 .has-atmosphere .project[data-slug="uulzy"] .stage-inner{background:rgba(255,255,255,.68)}
 .has-atmosphere .type-play{background:linear-gradient(120deg,#ffffffa0,#edf5fc40,#ffffffa0);padding:25px 20px;border-radius:2px}
-@media(prefers-reduced-motion:reduce){.silver-field{display:none}}
+
 /* Review refinements: a clear introduction and safe motion boundaries. */
 :root{--type-name:clamp(40px,12vw,180px)}
 .hero-name{justify-content:space-between;letter-spacing:-.065em;padding:0 .02em;max-width:100%}
@@ -128,7 +128,7 @@ background:linear-gradient(165deg,#171d24 0%,#46535f 38%,#87949e 48%,#3c4853 56%
 .stage-word{position:relative;z-index:1}.stage-inner.has-image-reveal .stage-word{transition:opacity .25s}.stage-inner.has-image-reveal.is-revealing .stage-word{opacity:.28}
 .contact footer{line-height:1.6}.contact footer>span:first-child{max-width:32ch}
 @media(max-width:800px){.hero-sculpture{left:10%;width:80vw}.human-type{font-size:10vw}}
-@media(prefers-reduced-motion:reduce){.project-reveal-image{transition:none}.availability i{animation:none}}
+
 @media(max-width:800px){.hero-caption{display:block}.hero-bottom{display:flex;justify-content:space-between;align-items:end}.hero-caption,.availability{font-size:11px}.hero-introduction{padding-bottom:10px}}
 
 /* Restore the folded silver ribbon composition. */
@@ -136,3 +136,18 @@ background:linear-gradient(165deg,#171d24 0%,#46535f 38%,#87949e 48%,#3c4853 56%
 @media(min-width:1600px){.hero-sculpture{width:600px}}
 @media(max-width:800px){.hero-sculpture{left:28%;width:55vw}}
 @media(max-width:520px){.hero-sculpture{left:13%;width:76vw}}
+.language-switch{display:flex;align-items:center;gap:3px}.language-switch button{background:none;border:0;color:#71808c;font-size:11px;padding:7px 5px;cursor:pointer}.language-switch button[aria-pressed="true"]{color:#17232e;box-shadow:inset 0 -1px #17232e}
+.nav{gap:20px}.nav nav{margin-left:auto}.nav .cv-link{white-space:nowrap}
+html[lang="mn"] .human-type{font-size:clamp(32px,7.3vw,110px)}html[lang="mn"] .cs-type{font-size:clamp(40px,9vw,140px)}html[lang="mn"] .contact h2{font-size:var(--type-heading)}html[lang="mn"] .about-copy h3{font-size:clamp(24px,2.6vw,34px)}html[lang="mn"] .project h3{font-size:clamp(28px,4.4vw,65px)}
+@media(max-width:800px){.nav{flex-wrap:wrap;height:auto;min-height:88px;padding-top:14px;padding-bottom:12px;gap:10px}.nav nav{order:3;width:100%;justify-content:center;margin:0;gap:25px}.nav .cv-link{margin-left:auto;max-width:none}.hero{min-height:calc(100svh - 100px)}html[lang="mn"] .human-type{font-size:8vw}html[lang="mn"] .cs-type{font-size:9vw}.language-switch button{font-size:11px}.hero-meta{font-size:11px}}
+
+/* Compact monogram shared by both languages. */
+.nav .brand{font-size:30px;line-height:1;font-weight:600;letter-spacing:-.08em;padding-right:3px}
+.hero-meta>span:first-child{letter-spacing:0;line-height:1.6}
+@media(max-width:520px){.nav .brand{font-size:28px}}
+.symbol-icon{display:inline-block;width:1em;height:1em;vertical-align:-.12em;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.contact-star .symbol-icon,.stage-plus .symbol-icon,.scroll .symbol-icon{display:block}
+@media(max-width:800px),(pointer:coarse){
+.project-stage{touch-action:pan-y}
+.project-stage,.stage-inner{will-change:auto}
+}

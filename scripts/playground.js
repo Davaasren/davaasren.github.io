@@ -2,7 +2,7 @@
 window.startParticleSphere=function(){
  const button=document.querySelector('.particle-sphere');if(!button)return;
  const canvas=button.querySelector('canvas'),ctx=canvas.getContext('2d');if(!ctx)return;
- const reduced=matchMedia('(prefers-reduced-motion: reduce)');let w=0,h=0,last=0,burst=0,mx=0,my=0,aimX=0,aimY=0,visible=true,hover=false,pointerX=0,pointerY=0,touchUntil=0;
+ const reduced={matches:false,addEventListener(){},removeEventListener(){}};let w=0,h=0,last=0,burst=0,mx=0,my=0,aimX=0,aimY=0,visible=true,hover=false,pointerX=0,pointerY=0,touchUntil=0;
  const points=Array.from({length:600},(_,i)=>{const y=1-i/599*2,r=Math.sqrt(1-y*y),a=i*Math.PI*(3-Math.sqrt(5));return {x:Math.cos(a)*r,y,z:Math.sin(a)*r,dx:0,dy:0,vx:0,vy:0};});
  const resize=()=>{w=button.clientWidth;h=button.clientHeight;const dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);render(0);};
  const render=time=>{ctx.clearRect(0,0,w,h);const size=Math.min(h*.34,w*.35),angle=reduced.matches?0:time*.18+mx*.5,tilt=my*.35;
