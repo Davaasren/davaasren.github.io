@@ -41,7 +41,7 @@ window.startPortfolioMotion = function () {
    intro.from('.hero-sculpture',{rotation:-12,scale:.85,opacity:0,duration:1.1},.15);
    if(desktop){const sculpture=document.querySelector('.hero-sculpture img'),rx=gsap.quickTo(sculpture,'rotationY',{duration:1}),ry=gsap.quickTo(sculpture,'rotationX',{duration:1}),hx=gsap.quickTo(sculpture,'x',{duration:1});on(document.querySelector('.hero'),'pointermove',event=>{rx((event.clientX/innerWidth-.5)*12);ry((event.clientY/innerHeight-.5)*-9);hx((event.clientX/innerWidth-.5)*18)});on(document.querySelector('.hero'),'pointerleave',()=>{rx(0);ry(0);hx(0)});}
   }
-  const story=gsap.timeline({scrollTrigger:{trigger:'.scroll-scene',start:desktop?'top top':'top 70%',end:desktop?()=>'+='+innerHeight*1.35:'bottom 20%',pin:desktop,scrub:desktop?.55:.3,anticipatePin:1,invalidateOnRefresh:true},defaults:{ease:'none'}});
+  const story=gsap.timeline({scrollTrigger:{trigger:'.scroll-scene',start:desktop?'top top':()=>`top ${document.querySelector('.nav').getBoundingClientRect().height}px`,end:()=>'+='+innerHeight*(desktop?1.35:1.6),pin:true,scrub:desktop?.55:.35,anticipatePin:1,invalidateOnRefresh:true},defaults:{ease:'none'}});
   story.from('.cs-type span',{xPercent:(i)=>i?-8:8,duration:.3})
    .to('.cs-type span',{x:(i)=> (i?1:-1)*innerWidth*1.35,xPercent:0,rotation:(i)=>i?24:-24,duration:.7},.35)
    .from('.human-type span',{yPercent:120,clipPath:'inset(0 0 100% 0)',opacity:0,stagger:.18,duration:.6},.6)
