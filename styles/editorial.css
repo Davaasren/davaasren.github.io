@@ -436,3 +436,63 @@ body.has-atmosphere>main{position:relative;z-index:1;isolation:isolate}
 #lab .sphere-bottom>.section-label{font-size:10px;background:var(--chip);color:var(--resume-heading);border-radius:20px;padding:8px 14px;letter-spacing:.06em;white-space:nowrap}
 @media(max-width:800px){#lab .sphere-play{padding:20px}#lab .particle-sphere{height:290px}#lab .sphere-bottom{flex-direction:column;align-items:flex-start;gap:12px}}
 @media(max-width:520px){#lab .lab-caption{display:flex;gap:8px;flex-direction:column}#lab .particle-sphere{height:250px}}
+
+.theme-switch.theme-turning svg{animation:theme-turn .45s cubic-bezier(.4,0,.2,1)}
+@keyframes theme-turn{from{rotate:0deg}to{rotate:180deg}}
+.theme-switch:disabled{cursor:default}
+
+/* Playful details stay inside the panels, leaving reading and scrolling steady. */
+.motion-card{position:relative;isolation:isolate;transition:transform .55s cubic-bezier(.22,1,.36,1),border-color .45s,box-shadow .45s}
+.motion-card::after{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at var(--glow-x,50%) var(--glow-y,50%),#8bb9f51b,transparent 55%);opacity:0;transition:opacity .5s;pointer-events:none;z-index:-1}
+@media(hover:hover) and (pointer:fine){.motion-card.card-hover{transform:perspective(1000px) rotateX(var(--card-rx,0deg)) rotateY(var(--card-ry,0deg)) translateY(-3px);border-color:var(--ornament);box-shadow:0 14px 35px -24px #4275b85c}.motion-card.card-hover::after{opacity:1}}
+.experience-icon,.learning-icon{animation:icon-float 6s ease-in-out infinite;transform-origin:center}
+.timeline-row:nth-child(2) .experience-icon,.learning-card:nth-child(2) .learning-icon{animation-delay:-2s}
+.timeline-row:nth-child(3) .experience-icon,.learning-card:nth-child(3) .learning-icon{animation-delay:-4s}
+@keyframes icon-float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-4px) rotate(2deg)}}
+.learning-art{animation:learning-drift 14s ease-in-out infinite}
+@keyframes learning-drift{0%,100%{translate:0 0}50%{translate:-8px -8px}}
+.project-view .symbol-icon{transition:transform .35s}.project-view:hover .symbol-icon{transform:translate(3px,-3px)}
+.work .project-stage{transition:border-color .4s,box-shadow .4s}.work .project-stage:hover{border-color:var(--ornament);box-shadow:0 15px 36px -26px #629be77a}
+@media print{.motion-card::after{display:none}.experience-icon,.learning-icon,.learning-art{animation:none!important}.motion-card{transform:none!important}}
+
+.availability{color:#28735a!important;font-weight:600;letter-spacing:.08em}
+html[data-theme=dark] .availability{color:#a7f0d2!important;text-shadow:0 0 12px #78e6b044}
+.availability i{background:#66dba8;box-shadow:0 0 5px #79e6b8,0 0 14px #79e6b877}
+.about-copy article>.section-label::before{content:none!important}
+.learning-label>span{display:none}
+#education.education{padding:24px;border:1px solid var(--about-border);border-radius:18px;background:var(--about-panel);margin-top:24px}
+#work>.section-title{white-space:normal}
+.skill-definition{position:fixed;z-index:1100;width:280px;padding:12px 15px;border:1px solid var(--about-border);border-radius:12px;background:var(--paper);color:var(--resume-heading);box-shadow:0 8px 28px #14233722;font-size:13px;line-height:1.5;pointer-events:none}
+.experience-chips span,.capability-grid li,.project-chips span,.learning-chips span{cursor:help}
+
+.hero-meta>span:first-child{text-transform:uppercase}
+
+/* Compact navigation and aligned two-line hero metadata. */
+:root{--nav-offset:60px}
+.nav{gap:18px;min-height:0;padding-top:0;padding-bottom:0}
+.nav .brand{font-size:26px}
+.nav nav{gap:24px}
+.theme-switch{width:32px;height:32px}
+.hero-meta{align-items:start;line-height:1.5}
+.hero-meta>span:first-child,.hero-edition{font-size:10px;letter-spacing:.06em}
+@media(max-width:800px){
+ :root{--nav-offset:94px}
+ .nav{padding:10px 20px 8px;display:flex;flex-wrap:wrap;gap:8px 14px;align-content:center}
+ .nav .brand{margin-right:auto;font-size:25px}
+ .nav nav{order:3;flex-basis:100%;justify-content:space-between;gap:10px;padding-top:4px}
+ .nav nav a{font-size:11px;padding-block:4px}
+ .nav .cv-link{margin-left:0;font-size:11px}
+ .language-switch{gap:4px}.language-switch button{padding:6px;font-size:11px}
+ .hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+ .hero-meta>span:first-child{max-width:none}
+ .hero-introduction{grid-row:2;grid-column:1/-1;margin-top:0}
+ .hero-edition{grid-row:1;grid-column:2}
+ .motion-active .scroll-scene{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:40px 20px;min-height:calc(100svh - var(--nav-offset));height:calc(100svh - var(--nav-offset))}
+ .human-type{inset:0;width:100%;padding:0 16px;text-align:center;align-items:center;justify-content:center;font-size:clamp(27px,8vw,60px);line-height:1.12}
+ html[lang=mn] .human-type{font-size:clamp(24px,7.6vw,55px)}
+ .human-type span{max-width:100%;align-self:center}
+ .human-type b{font-size:17px;margin:5px 0}
+ .cs-type{font-size:clamp(40px,12vw,90px);width:100%;text-align:center;align-items:center}
+ .cs-type span:nth-child(2){align-self:center}
+}
+@media(max-width:520px){:root{--nav-offset:94px}.nav nav{gap:6px}.nav nav a{font-size:10px}}

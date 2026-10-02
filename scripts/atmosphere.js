@@ -14,18 +14,28 @@ window.startAtmosphere = function(gsap){
   px+=(tx-px)*.13;py+=(ty-py)*.13;
   const r=lab?.getBoundingClientRect(),play=r&&r.top<h&&r.bottom>0;
   ctx.clearRect(0,0,w,h);
-  night+=((document.documentElement.dataset.theme==='dark'?1:0)-night)*.09;
+  night+=((document.documentElement.dataset.theme==='dark'?1:0)-night)*.025;
   // Sparse dots: orbit away from the pointer, then settle back into their field.
   const gap=w<600?56:64,shift=(scrollY*.055)%gap;
   for(let x=24;x<w;x+=gap)for(let y=-gap;y<h+gap;y+=gap){
    const bx=x+Math.sin(y*.008+time*.18)*5,by=y-shift,dx=bx-px,dy=by-py,dist=Math.hypot(dx,dy),force=active?Math.max(0,1-dist/180):0;
    const spread=force*(play?38:20),angle=Math.atan2(dy,dx);
    const xx=bx+Math.cos(angle+force*.7)*spread,yy=by+Math.sin(angle+force*.7)*spread;
+   const diagonal=(xx/w+yy/h)*.5;
+   const wave=Math.max(0,Math.min(1,(night*1.45-diagonal*.45)/.55));
+   const dotNight=wave*wave*(3-2*wave);
    const twinkle=(Math.sin(time*.65+x*.073+y*.041)+1)*.5;
-   const alpha=.18+force*.15+night*(.09+twinkle*.17),size=.85+night*twinkle*.35;
-   ctx.fillStyle=`rgba(${Math.round(96+night*85)},${Math.round(125+night*71)},${Math.round(151+night*64)},${alpha})`;
-   if(night>.02&&twinkle>.65){const halo=ctx.createRadialGradient(xx,yy,0,xx,yy,7);halo.addColorStop(0,`rgba(179,202,232,${night*twinkle*.24})`);halo.addColorStop(1,'rgba(179,202,232,0)');ctx.fillStyle=halo;ctx.fillRect(xx-7,yy-7,14,14);ctx.fillStyle=`rgba(181,196,215,${alpha})`;}
-   ctx.beginPath();ctx.arc(xx,yy,force>0?size+force*.6:size,0,Math.PI*2);ctx.fill();
+   const alpha=.18+force*.15+dotNight*(.09+twinkle*.17),size=.85+dotNight*twinkle*.35;
+   ctx.fillStyle=`rgba(${Math.round(96+dotNight*85)},${Math.round(125+dotNight*71)},${Math.round(151+dotNight*64)},${alpha})`;
+   if(dotNight>.02&&twinkle>.65){const halo=ctx.createRadialGradient(xx,yy,0,xx,yy,7);halo.addColorStop(0,`rgba(179,202,232,${dotNight*twinkle*.24})`);halo.addColorStop(1,'rgba(179,202,232,0)');ctx.fillStyle=halo;ctx.fillRect(xx-7,yy-7,14,14);ctx.fillStyle=`rgba(181,196,215,${alpha})`;}
+   // Five small petals blend into the existing stars as the theme changes.
+   if(dotNight<.99){
+    ctx.save();ctx.translate(xx,yy);ctx.rotate(x*.012+y*.007+time*.025);
+    ctx.fillStyle=`rgba(115,146,176,${(.075+force*.055)*(1-dotNight)})`;
+    for(let petal=0;petal<5;petal++){ctx.rotate(Math.PI*2/5);ctx.beginPath();ctx.ellipse(0,-2.2,1.05,1.7,0,0,Math.PI*2);ctx.fill();}
+    ctx.beginPath();ctx.arc(0,0,.75,0,Math.PI*2);ctx.fill();ctx.restore();
+   }
+   if(dotNight>.01){ctx.fillStyle=`rgba(181,196,215,${alpha*dotNight})`;ctx.beginPath();ctx.arc(xx,yy,force>0?size+force*.6:size,0,Math.PI*2);ctx.fill();}
   }
   // Engraved contour islands: asymmetrical linework in the dot palette.
   const drift=Math.sin(time*.12)*8,parallax=Math.sin(scrollY*.0007)*24;
