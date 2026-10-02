@@ -212,3 +212,227 @@ html[data-theme=dark] .skills-lights{background:linear-gradient(180deg,#b7d5ff0b
 .motion-marquee.skills-lights>.skills-light-track{animation-duration:30s;white-space:nowrap}
 
 .theme-switch{position:relative;display:grid;place-items:center;width:38px;height:38px;padding:0!important;border-radius:50%;border-color:#91a5b544;overflow:hidden;transition:background .4s,border-color .4s}.theme-switch:hover{background:#91a5b518}.theme-switch svg{position:absolute;width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .65s cubic-bezier(.22,1,.36,1),opacity .45s}.theme-switch .theme-sun{opacity:1;transform:rotate(0) scale(1)}.theme-switch .theme-moon{opacity:0;transform:rotate(-75deg) scale(.45)}html[data-theme=dark] .theme-switch .theme-sun{opacity:0;transform:rotate(90deg) scale(.45)}html[data-theme=dark] .theme-switch .theme-moon{opacity:1;transform:rotate(0) scale(1)}.theme-switch:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+/* Shared reading grid keeps wide-screen sections aligned. */
+@media(min-width:1000px){
+ .motion-active .story>h2,.motion-active .foundation,.motion-active .about-copy{max-width:1200px}
+ .capabilities>.section-label,.capabilities>.capability-grid{max-width:1200px;margin-left:auto;margin-right:auto}
+ .capabilities>.section-label{display:block;margin-bottom:36px}
+ #about.section{padding-bottom:55px}.capabilities.section{padding-top:35px;padding-bottom:75px}
+ .motion-active .story>h2{margin-bottom:36px}.motion-active .about-copy{margin-top:28px;gap:56px}
+ .foundation{padding-top:24px;padding-bottom:24px}
+}
+
+/* Consistent spacing and content alignment throughout the resume. */
+main>.section{padding-top:60px;padding-bottom:60px}
+.section-title,.work>.section-title{margin-top:26px;margin-bottom:32px;font-size:clamp(36px,4.5vw,66px);line-height:1.08}
+#training>.section-label,#training>.section-title,#training>.resume-training,#experience>.section-label,#experience>.section-title,#experience>#timeline,#experience>#education,#work>.section-top,#work>.section-title,#work>.motion-marquee,#work>#projects,#lab>.section-top,#lab>.section-title,#lab>.sphere-play{max-width:1200px;margin-left:auto;margin-right:auto}
+.resume-training{gap:36px}.resume-training article{padding-top:20px;border-top:1px solid var(--line)}.resume-training h3{margin:0 0 12px;font-size:18px;font-weight:500;line-height:1.4}.resume-training p{margin:0;line-height:1.6}
+.education{margin-top:36px;padding-top:24px}.timeline-row{padding-top:26px;padding-bottom:26px}
+#training.section{padding-top:45px;padding-bottom:45px}#work.section{padding-top:45px}.work>.section-title{max-width:1200px}.motion-marquee.skills-lights{margin-top:26px;margin-bottom:30px}
+#about.section{padding-bottom:35px}.capabilities.section{padding-top:30px;padding-bottom:45px}.capability-grid{margin-top:28px}
+@media(max-width:800px){main>.section{padding-top:40px;padding-bottom:40px}.section-title,.work>.section-title{margin-top:22px;margin-bottom:26px;font-size:36px}.resume-training{gap:22px}.timeline-row{padding-top:22px;padding-bottom:22px}#training.section,#work.section{padding-top:35px;padding-bottom:35px}}
+/* Light projects share the surrounding pattern rather than opaque panels. */
+html:not([data-theme=dark]) body.motion-active .work .project,html:not([data-theme=dark]) .work,html:not([data-theme=dark]) .work .project,html:not([data-theme=dark]) .work .project-heading,html:not([data-theme=dark]) .work .project-description,html:not([data-theme=dark]) .work .project-stage,html:not([data-theme=dark]) .work .stage-inner{background:transparent!important;box-shadow:none}
+html:not([data-theme=dark]) .work .project-stage{border-color:#8ba0b52b}
+
+/* Compact resume sections and visible heading lines in both palettes. */
+#experience.section,#training.section,#work.section{padding-top:32px;padding-bottom:32px}
+#experience>.section-title,#training>.section-title,#work>.section-title{margin-top:18px;margin-bottom:26px}
+.section-title .line-mask>span{background:none!important;color:var(--ink);-webkit-text-fill-color:var(--ink);transform:none!important}
+.section-title .line-mask em{color:#596b7d;-webkit-text-fill-color:#596b7d}
+#education.education{margin-top:22px;padding-top:20px}
+#training .resume-training article{padding-top:16px}
+@media(max-width:800px){#experience.section,#training.section,#work.section{padding-top:28px;padding-bottom:28px}}
+
+:root{--resume-heading:#263440;--resume-secondary:#596b7b;--resume-body:#455563}
+html[data-theme=dark]{--resume-heading:#edf3fa;--resume-secondary:#bfcedd;--resume-body:#b7c4d2}
+.story>h2,.section-title,.work>.section-title{font-size:clamp(34px,3.8vw,62px);font-weight:500;letter-spacing:-.045em;line-height:1.12;background:none!important;color:var(--resume-heading)!important;-webkit-text-fill-color:var(--resume-heading)}
+.story>h2 .line-mask>span,.section-title .line-mask>span{color:var(--resume-heading)!important;-webkit-text-fill-color:var(--resume-heading)!important;background:none!important;transform:none!important}
+.story>h2 em,.section-title em,.section-title .line-mask em{font-style:normal;color:var(--resume-secondary)!important;-webkit-text-fill-color:var(--resume-secondary)!important}
+.about-copy{grid-template-columns:1fr 1fr;gap:6vw}
+.about-copy h3{font-size:clamp(24px,2.2vw,36px);font-weight:500;line-height:1.2;letter-spacing:-.035em;color:var(--resume-heading)}
+.about-copy p{max-width:56ch;font-size:16px;line-height:1.65;color:var(--resume-body)}
+.section-label,.capability-grid h3{font-size:11px;letter-spacing:.09em;font-weight:600;color:var(--resume-secondary)}
+.capability-grid li{font-size:clamp(17px,1.4vw,22px);line-height:1.65;color:var(--resume-heading)}
+.timeline-row h3,.education h3,.resume-training h3{font-size:clamp(19px,1.7vw,26px);line-height:1.3;font-weight:500;color:var(--resume-heading)}
+.timeline-row p,.education p,.resume-training p{font-size:15px;line-height:1.65;color:var(--resume-body)}
+.work .project-heading h3 a{background:none!important;color:var(--resume-heading)!important;-webkit-text-fill-color:var(--resume-heading)}
+.work .project-heading h3{font-size:clamp(28px,3vw,46px);line-height:1.15}
+.work .project-description p{color:var(--resume-body)}
+@media(max-width:800px){.about-copy{grid-template-columns:1fr;gap:24px}.about-copy p{font-size:15px}.timeline-row h3,.education h3,.resume-training h3{font-size:20px}}
+
+/* Centered reading layout: spacing carries the hierarchy, not repeated rules. */
+.nav,.hero{padding-inline:max(24px,calc((100vw - 1320px)/2))}
+main>.section{padding-inline:max(24px,calc((100vw - 1160px)/2))}
+.motion-active .story>h2,.motion-active .foundation,.motion-active .about-copy,
+.capabilities>.section-label,.capabilities>.capability-grid,
+#experience>.section-label,#experience>.section-title,#timeline,#education,
+#training>.section-label,#training>.section-title,#training>.resume-training,
+#work>.section-top,#work>.section-title,#work>.motion-marquee,#projects,
+#lab>.section-top,#lab>.section-title,#lab>.sphere-play{max-width:none;width:100%;margin-inline:0}
+.motion-active .scroll-scene{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding-inline:max(24px,calc((100vw - 1160px)/2))}
+.timeline-row{padding-left:0;grid-template-columns:110px minmax(0,1.2fr) minmax(0,1fr);gap:32px}
+#education.education{grid-template-columns:110px minmax(0,1.2fr) minmax(0,1fr);gap:32px;margin-top:16px;padding-top:20px}
+.about-copy{gap:56px}.about-copy article{padding-top:0}
+.foundation{padding-block:14px;margin-bottom:24px}
+#experience.section,#training.section,#work.section,#lab.section{padding-block:44px}
+#training .resume-training article{padding-top:0}
+.work .project{padding-top:24px;padding-bottom:36px}
+.work .project+.project{margin-top:12px}
+html .work .project-stage{border-radius:14px}
+.sphere-play{padding-bottom:0}
+footer{padding-top:20px}
+@media(max-width:800px){.nav,.hero,main>.section{padding-inline:24px}.timeline-row,#education.education{grid-template-columns:80px minmax(0,1fr);gap:18px}.timeline-row>p,#education.education>p{grid-column:2}.about-copy{gap:28px}#experience.section,#training.section,#work.section,#lab.section{padding-block:32px}}
+@media(max-width:520px){.nav,.hero,main>.section{padding-inline:20px}.timeline-row,#education.education{grid-template-columns:1fr;gap:10px}.timeline-row>p,#education.education>p{grid-column:1}.resume-training{gap:26px}}
+
+.timeline-row h3,.education h3,.resume-training h3{color:var(--resume-heading)!important}
+
+/* Scene captions follow the same centered edge as the resume content. */
+.motion-active .scene-index{left:max(24px,calc((100vw - 1160px)/2))}
+.motion-active .scene-foot{left:max(24px,calc((100vw - 1160px)/2));right:max(24px,calc((100vw - 1160px)/2))}
+.timeline-row{border-left:1px solid var(--line);padding-left:25px}
+@media(max-width:520px){.motion-active .scene-index{left:20px}.motion-active .scene-foot{left:20px;right:20px}}
+
+/* Soft about panels and compact skill chips inspired by the reference. */
+:root{--about-panel:#f7f9fcbb;--about-border:#dce5ef;--chip:#edf1f7;--ornament:#819fc8}
+html[data-theme=dark]{--about-panel:#192331a6;--about-border:#334258;--chip:#263447;--ornament:#92b8eb}
+.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);column-gap:32px;align-items:end}
+.story>.scroll-scene,.story>.pin-spacer,.story>.about-copy{grid-column:1/-1}
+.motion-active .story>h2{margin-top:32px;margin-bottom:30px;font-weight:650;font-size:clamp(36px,4vw,60px)}
+.motion-active .foundation{border:0;gap:16px;font-size:11px;letter-spacing:.025em;flex-wrap:wrap;justify-content:flex-start;padding:0 0 8px;margin-bottom:30px}
+.motion-active .about-copy{margin-top:0;gap:24px;grid-template-columns:1.25fr 1fr}
+.about-copy article{position:relative;border:1px solid var(--about-border);border-radius:22px;padding:28px 30px!important;background:var(--about-panel);overflow:hidden}
+.about-copy article>.section-label{display:block;margin-bottom:24px}
+.about-copy article:first-child>.section-label::before{content:'01 / '}.about-copy article:nth-child(2)>.section-label::before{content:'02 / '}
+.about-copy h3{font-size:clamp(25px,2.3vw,34px);margin:0 0 18px;position:relative;z-index:1}
+.about-copy p{font-size:15px;line-height:1.6;margin:10px 0;position:relative;z-index:1;max-width:48ch}
+.about-copy article:first-child{padding-right:110px!important}
+.about-ornament{position:absolute;right:22px;top:70px;width:76px;height:76px;color:var(--ornament);opacity:.6;pointer-events:none}
+.about-ornament>span{position:absolute;inset:0;border:1px solid currentColor;border-radius:50%;transform:rotate(30deg) scaleY(1.7);background:radial-gradient(ellipse,#aac7ef25,transparent)}
+.about-ornament>span+span{transform:translate(-15px,40px) rotate(35deg) scaleY(1.5);opacity:.6}
+.about-ornament svg{width:45px;height:45px;padding:10px;box-sizing:content-box;border-radius:18px;background:var(--chip);fill:none;stroke:currentColor;stroke-width:1.5}
+.about-copy article:nth-child(2) h3{padding-right:50px}
+.capabilities.section{padding-top:30px;padding-bottom:40px}
+.capability-grid{gap:26px}.capability-grid>div+div{border-left:1px solid var(--about-border);padding-left:26px}
+.capability-grid h3{display:flex;align-items:center;gap:12px;font-size:16px;font-weight:500;letter-spacing:-.015em;text-transform:none;color:var(--resume-heading);margin-bottom:18px}
+.skill-icon{width:28px;height:28px;flex-shrink:0;stroke:var(--ornament);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.capability-grid ul{display:flex;gap:8px;flex-wrap:wrap}.capability-grid li{display:inline-flex;background:var(--chip);padding:7px 14px;border-radius:24px;font-size:14px;line-height:1.3;letter-spacing:0;cursor:default}
+@media(max-width:800px){.story{display:block}.motion-active .foundation{margin-bottom:22px}.motion-active .about-copy{grid-template-columns:1fr}.about-copy article{padding:24px!important}.about-copy article:first-child{padding-right:100px!important}.capability-grid{grid-template-columns:1fr;gap:28px}.capability-grid>div+div{border-left:0;padding-left:0}.about-copy h3{font-size:28px}}
+@media print{.about-ornament{display:none}.about-copy article{padding:8px!important;background:none;border:0}.capability-grid li{background:none;padding:2px}}
+
+/* Navigation remains available throughout the page. */
+.nav{position:sticky;top:0;z-index:100;background:#ffffffeb;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+html[data-theme=dark] .nav{background:#11161eeb}
+@media print{.nav{display:none!important}}
+
+/* Restrained motion for the about cards and individual skills. */
+.about-copy article{transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s,border-color .5s,background-color .85s}
+.about-ornament>span{animation:orbit-drift 18s ease-in-out infinite}
+.about-ornament>span+span{animation-name:orbit-drift-offset;animation-duration:23s}
+.capability-grid li{transition:background-color .3s,color .3s,box-shadow .3s,translate .3s}
+.capability-grid li.chip-enter{animation:chip-arrive .65s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--chip-delay,0ms)}
+@keyframes chip-arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes orbit-drift{0%,100%{transform:rotate(30deg) scaleY(1.7)}50%{transform:rotate(48deg) scaleY(1.55)}}
+@keyframes orbit-drift-offset{0%,100%{transform:translate(-15px,40px) rotate(35deg) scaleY(1.5)}50%{transform:translate(-10px,34px) rotate(12deg) scaleY(1.65)}}
+@media(hover:hover) and (pointer:fine){.about-copy article:hover{transform:translateY(-4px);border-color:var(--ornament);box-shadow:0 12px 30px -18px #466c9d35}.capability-grid li:hover{translate:0 -2px;background:#dce8f6;box-shadow:0 0 14px #86addf25}html[data-theme=dark] .capability-grid li:hover{background:#344e6a;color:#eef6ff;box-shadow:0 0 16px #8bbaff20}}
+@media print{.about-copy article{transform:none!important;box-shadow:none!important}.capability-grid li.chip-enter,.about-ornament>span{animation:none!important}}
+
+/* Experience cards share the about section's quiet surfaces. */
+#experience>.section-title{font-weight:650;margin-bottom:8px}
+.experience-subtitle{font-size:20px;color:var(--resume-secondary);margin:0 0 28px;line-height:1.4}
+#timeline{padding-left:18px;border-left:1px solid var(--about-border);display:grid;gap:14px}
+#timeline .timeline-progress{display:none}
+.timeline-row{position:relative;border:1px solid var(--about-border);border-radius:18px;background:var(--about-panel);padding:24px!important;grid-template-columns:90px minmax(0,1.35fr) minmax(0,1fr) 64px;gap:24px;align-items:start}
+.timeline-row::before{left:-24px;top:32px;width:9px;height:9px;background:var(--resume-heading);box-shadow:0 0 0 5px var(--chip)}
+.timeline-row h3{font-size:20px;letter-spacing:-.025em;font-weight:600;margin-bottom:8px}
+.timeline-row .date{font-size:15px;color:var(--resume-secondary);padding-top:3px}
+.timeline-row .role{font-size:15px;color:var(--resume-secondary)}
+.timeline-row>p{border-left:1px solid var(--about-border);padding-left:24px;font-size:14px;line-height:1.65;align-self:center}
+.experience-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.experience-chips span,.degree-chip{font-size:12px;line-height:1.3;background:var(--chip);border-radius:20px;padding:6px 12px;color:var(--resume-heading)}
+.experience-icon{width:58px;height:58px;align-self:center;padding:12px;border-radius:16px;background:var(--chip);stroke:var(--ornament);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#education.education{margin-top:26px;padding-top:26px;border-top:1px solid var(--about-border);grid-template-columns:180px minmax(0,1fr) auto;align-items:center;gap:28px}
+.education-label{font-size:26px;font-weight:650;text-transform:none;letter-spacing:-.035em;color:var(--resume-heading)}
+.education h3{font-size:20px;font-weight:600}.degree-chip{display:inline-block;margin-left:12px}
+@media(max-width:1000px){.timeline-row{grid-template-columns:75px minmax(0,1fr) minmax(0,1fr);gap:18px}.experience-icon{display:none}}
+@media(max-width:800px){.timeline-row{grid-template-columns:70px minmax(0,1fr);padding:20px!important}.timeline-row>p{grid-column:2;border-left:0;padding-left:0}#education.education{grid-template-columns:1fr;gap:14px}.experience-subtitle{font-size:17px}}
+@media(max-width:520px){.timeline-row{grid-template-columns:1fr;gap:12px}.timeline-row>p{grid-column:1}.timeline-row h3{font-size:19px}.experience-chips{margin-top:12px}}
+@media print{#timeline{border:0;padding:0}.timeline-row{background:none;border:0;padding:8px!important}.experience-icon{display:none}.experience-chips span{background:none;padding:2px}.experience-subtitle{font-size:12px}.education-label{font-size:16px}}
+
+/* Learning cards: compact copy, understated abstract illustrations. */
+#training>.section-title{font-size:clamp(36px,4vw,60px);margin-bottom:30px}
+.resume-training{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+#training .learning-card{position:relative;display:flex;flex-direction:column;min-height:340px;border:1px solid var(--about-border);border-radius:20px;padding:24px;background:var(--about-panel);overflow:hidden}
+.learning-label{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--resume-secondary);padding-right:38px;margin-bottom:26px}
+.learning-label>span{font-size:12px;letter-spacing:0;color:var(--resume-heading)}
+#training .learning-card h3{font-size:24px;font-weight:500;line-height:1.18;letter-spacing:-.035em;margin:0 0 18px;max-width:95%;z-index:1}
+#training .learning-card p{font-size:14px;line-height:1.65;max-width:28ch;z-index:1;margin:0 0 24px;color:var(--resume-body)}
+.learning-icon{position:absolute;right:20px;top:18px;width:36px;height:36px;padding:8px;border-radius:50%;background:var(--chip);stroke:var(--ornament);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.learning-meta{font-size:13px;color:var(--resume-secondary);margin-top:auto;z-index:1}
+.learning-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;z-index:1}
+.learning-chips span{font-size:12px;line-height:1.4;padding:6px 10px;border-radius:20px;background:var(--chip);color:var(--resume-heading)}
+.learning-art{position:absolute;right:-30px;bottom:-40px;width:150px;height:180px;pointer-events:none;opacity:.2;transform:rotate(28deg)}
+.learning-art span{position:absolute;inset:0;border:1px solid var(--ornament);border-radius:50%;background:radial-gradient(ellipse,#8db6eb44,transparent 70%)}
+.learning-art span+span{transform:translate(-22px,-30px) scale(.7)}
+.learning-card:nth-child(2) .learning-art{transform:rotate(-25deg)}
+@media(hover:hover) and (pointer:fine){.learning-card{transition:transform .5s,border-color .5s}.learning-card:hover{transform:translateY(-3px);border-color:var(--ornament)}}
+@media(max-width:1000px){.resume-training{grid-template-columns:1fr}.learning-card{min-height:0!important}#training .learning-card h3{max-width:80%}#training .learning-card p{max-width:55ch}.learning-meta{margin-top:0}}
+@media print{#training .learning-card{background:none;min-height:0;border:0;padding:8px}.learning-art,.learning-icon{display:none}}
+
+/* Fixed navigation works even when page effects establish scroll containers. */
+:root{--nav-offset:76px}
+body{padding-top:var(--nav-offset)}
+.nav{position:fixed!important;inset:0 0 auto;width:100%;z-index:1000;height:var(--nav-offset)}
+html{scroll-padding-top:calc(var(--nav-offset) + 24px)}
+#training .learning-card{padding:26px!important;min-height:290px}
+.learning-label{padding-right:42px;margin-bottom:22px;min-height:24px;align-items:center}
+.learning-icon{top:22px;right:22px}
+#training .learning-card h3{font-size:23px;line-height:1.25;margin-bottom:16px;min-height:58px}
+#training .learning-card p{margin-bottom:24px;max-width:none}
+.learning-meta,.learning-chips{margin-top:12px}
+.learning-art{width:115px;height:135px;opacity:.14}
+@media(max-width:1000px){#training .learning-card h3{min-height:0}.learning-label{margin-bottom:18px}}
+@media(max-width:800px){:root{--nav-offset:100px}.nav{align-content:center}.hero{min-height:calc(100svh - var(--nav-offset))}}
+@media(max-width:520px){:root{--nav-offset:110px}#training .learning-card{padding:22px!important}.learning-icon{right:18px;top:18px}}
+@media print{body{padding-top:0}}
+
+/* Keep the atmosphere content layer below the fixed navigation. */
+body.has-atmosphere>.nav,.nav{position:fixed!important;z-index:1000!important;background:#fff}
+html[data-theme=dark] body.has-atmosphere>.nav,html[data-theme=dark] .nav{background:#11161e}
+body.has-atmosphere>main{position:relative;z-index:1;isolation:isolate}
+
+/* Alternating editorial project rows retain the interactive artwork. */
+.work .project{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:48px;padding:38px 0 46px}
+.work .project:nth-child(even){grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}
+.work .project:nth-child(even) .project-copy{grid-column:2;grid-row:1}
+.work .project:nth-child(even) .project-stage{grid-column:1;grid-row:1}
+.work .project-heading{display:block;margin-bottom:20px}
+.work .project-number{display:block;font-size:12px;margin-bottom:20px;color:var(--resume-secondary)}
+.work .project-number::after{content:'';display:inline-block;width:42px;height:1px;background:var(--about-border);vertical-align:middle;margin-left:12px}
+.work .project-heading h3{font-size:clamp(26px,2.6vw,38px);line-height:1.15;margin-bottom:12px}
+.work .project-link{display:none}
+.work .project-description{display:block;margin:0}
+.work .project-description p{font-size:15px;line-height:1.65}
+.project-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.project-chips:empty{display:none}
+.project-chips span{padding:6px 10px;border-radius:20px;background:var(--chip);color:var(--resume-heading);font-size:12px}
+.project-view{display:inline-flex;align-items:center;gap:8px;font-size:13px;margin-top:26px;text-decoration:none;border-bottom:1px solid var(--resume-secondary);padding-bottom:5px;color:var(--resume-secondary)}
+.work .project-stage{height:330px;width:100%;border-radius:20px;border:1px solid var(--about-border);background:var(--about-panel)!important}
+.work .stage-word{font-size:clamp(24px,2.6vw,36px);max-width:78%}
+.work .stage-label{font-size:8px;letter-spacing:.04em;max-width:85%}
+.work .stage-plus{font-size:22px}
+@media(max-width:800px){.work .project,.work .project:nth-child(even){grid-template-columns:1fr;gap:22px;padding:28px 0 34px}.work .project:nth-child(even) .project-copy,.work .project:nth-child(even) .project-stage{grid-column:auto;grid-row:auto}.work .project-stage{height:250px}.work .project-number{margin-bottom:12px}.work .project-heading{margin-bottom:14px}.project-view{margin-top:18px}}
+@media print{.work .project,.work .project:nth-child(even){display:block}.project-chips{margin-top:5px}.project-chips span{background:none;padding:2px}.project-view{display:none}}
+
+/* Playground follows the same soft panel and typographic hierarchy. */
+#lab>.section-title{font-size:clamp(36px,4vw,60px);font-weight:500;line-height:1.12;margin-top:18px;margin-bottom:28px}
+#lab .small{font-size:12px;color:var(--resume-secondary);line-height:1.5}
+#lab .sphere-play{border:1px solid var(--about-border);border-radius:22px;background:var(--about-panel);padding:24px;overflow:hidden}
+#lab .lab-caption{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--resume-heading);line-height:1.5}
+#lab .lab-caption span{font-size:10px;color:var(--resume-secondary);font-weight:500}
+#lab .particle-sphere{height:340px;background:radial-gradient(ellipse at center,#91b8ee14,transparent 65%);border-radius:18px}
+#lab .sphere-bottom{padding-top:16px;border-top:1px solid var(--about-border);align-items:center}
+#lab .sphere-bottom p{font-size:14px;line-height:1.5;color:var(--resume-body);margin:0}
+#lab .sphere-bottom>.section-label{font-size:10px;background:var(--chip);color:var(--resume-heading);border-radius:20px;padding:8px 14px;letter-spacing:.06em;white-space:nowrap}
+@media(max-width:800px){#lab .sphere-play{padding:20px}#lab .particle-sphere{height:290px}#lab .sphere-bottom{flex-direction:column;align-items:flex-start;gap:12px}}
+@media(max-width:520px){#lab .lab-caption{display:flex;gap:8px;flex-direction:column}#lab .particle-sphere{height:250px}}

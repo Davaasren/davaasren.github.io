@@ -43,7 +43,7 @@ window.startPortfolioMotion = function () {
   }
   const story=gsap.timeline({scrollTrigger:{trigger:'.scroll-scene',start:desktop?'top top':'top 70%',end:desktop?()=>'+='+innerHeight*1.35:'bottom 20%',pin:desktop,scrub:desktop?.55:.3,anticipatePin:1,invalidateOnRefresh:true},defaults:{ease:'none'}});
   story.from('.cs-type span',{xPercent:(i)=>i?-8:8,duration:.3})
-   .to('.cs-type span',{xPercent:(i)=>i?110:-110,rotation:(i)=>i?8:-8,duration:.7},.35)
+   .to('.cs-type span',{x:(i)=> (i?1:-1)*innerWidth*1.35,xPercent:0,rotation:(i)=>i?24:-24,duration:.7},.35)
    .from('.human-type span',{yPercent:120,clipPath:'inset(0 0 100% 0)',opacity:0,stagger:.18,duration:.6},.6)
    .from('.human-type b',{scale:0,opacity:0,stagger:.18,duration:.3},.9)
    .to('.human-type',{scale:desktop?.92:1,duration:.3},1.5)
@@ -53,7 +53,7 @@ window.startPortfolioMotion = function () {
   // One moving typographic bridge: scroll progress + a restrained velocity skew.
   const marquee=document.querySelector('.motion-marquee>div');
 
-  document.querySelectorAll('.section-title').forEach(title=>gsap.from(title.querySelectorAll('.line-mask>span'),{yPercent:110,stagger:.07,ease:'power3.out',scrollTrigger:{trigger:title,start:'top 90%',end:'top 45%',scrub:.4}}));
+  document.querySelectorAll('.section-title').forEach(title=>gsap.set(title.querySelectorAll('.line-mask>span'),{yPercent:0}));
   document.querySelectorAll('.project').forEach(project=>{
    gsap.from(project.querySelector('.project-heading'),{y:16,opacity:0,duration:.5,ease:'power2.out',scrollTrigger:{trigger:project,start:'top 90%',once:true}});
   });
